@@ -1,4 +1,4 @@
-package com.apmikimmdo.marketplace
+package id.bisniso.market
 
 import io.flutter.embedding.android.FlutterActivity
 
