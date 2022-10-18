@@ -4,6 +4,8 @@ const d_wave_tr = "images/decorations/d_wave_tr.svg";
 const d_wave_tr_p = "images/decorations/d_wave_tr.png";
 
 // icon
+const ic_bisniso = "images/icons/ic_bisniso.svg";
+const ic_bisniso_png = "images/icons/ic_bisniso.png";
 const ic_allcategory = "images/icons/allcategories.svg";
 const ic_shop = "images/icons/ic_shop.svg";
 const ic_sendorder = "images/icons/ic_sendorder.svg";
@@ -37,8 +39,8 @@ const ic_logo_small = "images/icons/logo_apmikimmdo.svg";
 const img_clock = "images/img_clock.png";
 const img_arrow = "images/img_arrow.png";
 const img_logo_placeholder = "images/img_logo_placeholder.jpg";
-const img_logo = "images/img_apmikimmdo_logo.png";
-const img_logo_light = "images/img_apmikimmdo_light.png";
+const img_logo = "images/img_bisniso_logo.png";
+const img_logo_light = "images/img_bisniso_light.png";
 const img_logo_dark = "images/img_logo_dark.png";
 const img_not_found = "images/img_not_found.png";
 const img_open_shop = "images/img_open_shop.png";

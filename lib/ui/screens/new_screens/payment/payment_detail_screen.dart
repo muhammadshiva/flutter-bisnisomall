@@ -813,7 +813,7 @@ class _PaymentDetailScreenState extends State<PaymentDetailScreen> {
                                             horizontal:
                                                 _screenWidth * (10 / 100)),
                                         child: Text(
-                                          "Terimakasih sudah belanja di Apmikimmdo. Pesanan anda akan segera kami proses",
+                                          "Terimakasih sudah belanja di Bisniso. Pesanan anda akan segera kami proses",
                                           textAlign: TextAlign.center,
                                           style: AppTypo.body2Lato
                                               .copyWith(color: AppColor.grey),

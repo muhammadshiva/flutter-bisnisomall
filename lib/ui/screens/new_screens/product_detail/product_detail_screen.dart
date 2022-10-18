@@ -63,7 +63,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
         AnimationController(vsync: this, duration: Duration(seconds: 0));
     _colorTween = ColorTween(begin: Colors.transparent, end: Colors.white)
         .animate(_colorAnimationController);
-    _iconColorTween = ColorTween(begin: Colors.white, end: Color(0xFFF4406F))
+    _iconColorTween = ColorTween(begin: Colors.white, end: Color(0xFFF6B229))
         .animate(_colorAnimationController);
     _iconBackgroundColorTween =
         ColorTween(begin: Color(0xFF000000).withOpacity(0.2), end: Colors.white)

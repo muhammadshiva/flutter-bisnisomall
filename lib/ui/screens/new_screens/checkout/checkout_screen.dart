@@ -316,7 +316,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text("Saldo Apmikimmdo",
+                                                  Text("Saldo Bisniso",
                                                       style: AppTypo.body1Lato),
                                                   Text(
                                                       "Rp." +
@@ -359,8 +359,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       ),
                                       Visibility(
                                         visible: isSaldoSwitched,
-                                        child: dataTable.detail(
-                                            "Saldo Apmikimmdo",
+                                        child: dataTable.detail("Saldo Bisniso",
                                             "-Rp. ${AppExt.toRupiah(walletUser > subtotalPrice ? subtotalPrice + totalOngkirPrice : walletUser ?? 0)},-",
                                             textColor: Colors.red),
                                       ),

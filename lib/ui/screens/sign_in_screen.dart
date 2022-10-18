@@ -167,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               height: _screenWidth * (3 / 100),
                             ),
                             Text(
-                                "Dapatkan produk berkualitas dengan harga yang lebih murah di APMIKIMMDO super apps",
+                                "Dapatkan produk berkualitas dengan harga yang lebih murah di Bisniso",
                                 style: AppTypo.body1Lato),
                             SizedBox(
                               height: 46,

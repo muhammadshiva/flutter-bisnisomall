@@ -239,7 +239,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                         children: [
                           Image.asset(
                             AppImg.img_logo,
-                            height: 130,
+                            height: 46,
                           ),
                           SizedBox(height: 30),
                           _buildHead(),

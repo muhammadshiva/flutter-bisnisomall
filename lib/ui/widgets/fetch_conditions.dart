@@ -81,6 +81,7 @@ class EmptyData extends StatelessWidget {
                       child: RoundedButton.contained(
                         isSmall: true,
                         isUpperCase: false,
+                        textColor: AppColor.white,
                         label: labelBtn ?? "",
                         onPressed: onClick,
                       ),

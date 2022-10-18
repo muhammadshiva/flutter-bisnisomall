@@ -231,8 +231,7 @@ class _TransaksiScreenState extends State<TransaksiScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: 
-                        BlocBuilder<
+                        child: BlocBuilder<
                             FetchTransactionMenungguPembayaranBloc,
                             FetchTransactionMenungguPembayaranState>(
                           builder: (context, state) {

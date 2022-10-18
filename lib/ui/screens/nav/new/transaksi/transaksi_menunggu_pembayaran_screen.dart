@@ -25,7 +25,6 @@ class TransaksiMenungguPembayaranScreen extends StatefulWidget {
 
 class _TransaksiMenungguPembayaranScreenState
     extends State<TransaksiMenungguPembayaranScreen> {
-
   @override
   void initState() {
     context

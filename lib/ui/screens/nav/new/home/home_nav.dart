@@ -100,7 +100,7 @@ class _HomeNavState extends State<HomeNav> with TickerProviderStateMixin {
     _colorAnimationController =
         AnimationController(vsync: this, duration: Duration(seconds: 0));
     _backgroundColorTween =
-        ColorTween(begin: Colors.transparent, end: Color(0xFFF4406F))
+        ColorTween(begin: Colors.transparent, end: Color(0xFFFCCB0A))
             .animate(_colorAnimationController);
   }
 
@@ -843,7 +843,7 @@ class _HomeNavState extends State<HomeNav> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            AppImg.ic_apmikimmdo_png,
+            AppImg.ic_bisniso_png,
             fit: BoxFit.contain,
             height: 33,
             width: 33,

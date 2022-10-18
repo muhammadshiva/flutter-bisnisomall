@@ -41,10 +41,10 @@ class AppBarConfig extends StatelessWidget implements PreferredSizeWidget {
       leading: Padding(
         padding: const EdgeInsets.only(bottom: 11, top: 4, left: 10, right: 10),
         child: kIsWeb
-            ? WebsafeSvg.asset(AppImg.ic_apmikimmdo,
+            ? WebsafeSvg.asset(AppImg.ic_bisniso,
                 width: 30, height: 30, color: logoColor ?? Colors.white)
             : Image.asset(
-                AppImg.ic_apmikimmdo_png,
+                AppImg.ic_bisniso_png,
                 fit: BoxFit.contain,
                 width: 33,
                 height: 33,

@@ -283,7 +283,7 @@ class _InvoicePaymentScreenState extends State<InvoicePaymentScreen> {
                               child: Image.asset(
                                 AppImg.img_logo,
                                 fit: BoxFit.contain,
-                                height: 130,
+                                height: 46,
                               ),
                             ),
                             SizedBox(height: 30),

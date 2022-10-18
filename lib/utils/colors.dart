@@ -21,7 +21,7 @@ const red = Color(0xFFEB4F4D);
 const gold = Color(0xFFFBE570);
 const danger = Color(0xFFE64036);
 const warning = Color(0xFFFEC107);
-const success = Color(0xFFF4406F);
+const success = Color(0xFFFCCB0A);
 const yellow = Color(0xFFF3AF48);
 const white = Color(0xFFFFFFFF);
 const blue = Color(0xFF2A90EE);
@@ -61,13 +61,13 @@ const redFlashSale = Color(0xFFFF1D0F);
 const silverFlashSale = Color(0xFFE5E5E5);
 
 //variant
-const bgVariantSelected = Color(0xFFFEE2F6);
+const bgVariantSelected = Color(0xFFFEF5E2);
 
 // Badge Color
 const bgBadgeGold = Color(0xFFFBE570);
-const bgBadgePink = Color(0xFFFEE2F6);
+const bgBadgePink = Color(0xFFFEF5E2);
 const bgBadgeGreen = Color(0xFFC6EFAB);
-const bgBadgeLightGreen = Color(0xFFFEE2F6);
+const bgBadgeLightGreen = Color(0xFFFEF5E2);
 const bgBadgeDarkGreen = Color(0xFF93DCD4);
 const bgBadgeRed = Color(0xFFF3BEBE);
 const bgBadgeBlue = Color(0xFFBCE5F0);
@@ -80,8 +80,9 @@ const bgTextBrown = Color(0xFF915B4A);
 
 class DefTheme {
 // main color
-  static const appPrimary = Color(0xFFF4406F);
-  static const primary = Color(0xFFF4406F);
+//F6B229
+  static const appPrimary = Color(0xFFFCCB0A);
+  static const primary = Color(0xFFF6B229);
   static const primaryLight1 = Color(0xFFC6C6C6);
   static const primaryLight2 = Color(0xFFFFB624);
   static const primaryDark = Color(0xFF21232C);

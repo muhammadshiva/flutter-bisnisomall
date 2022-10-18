@@ -228,7 +228,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             WebviewAdmaPrivacyScreen(
                                                 link:
                                                     "https://admasolusi.com/privacy")),
-                                  text: 'kebijakan privasi',
+                                  text: 'kebijakan\nprivasi',
                                   style: AppTypo.captionAccent.copyWith(
                                       fontWeight: FontWeight.w700,
                                       color: AppColor.success),

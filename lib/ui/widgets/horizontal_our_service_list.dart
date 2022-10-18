@@ -68,40 +68,40 @@ class OurServiceList extends StatelessWidget {
             padding: EdgeInsets.only(left: _screenWidth * (2 / 100)),
             scrollDirection: Axis.horizontal,
             children: [
-              InkWell(
-                onTap: () {
-                  launch("https://apmikimdo.org/");
-                },
-                child: Container(
-                  width: 73,
-                  height: 80,
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        AppImg.ic_apmikimmdo_png,
-                        fit: BoxFit.contain,
-                        height: 35,
-                      ),
-                      SizedBox(
-                        height: 7.5,
-                      ),
-                      FittedBox(
-                        child: Container(
-                          width: 82,
-                          child: RichText(
-                            maxLines: kIsWeb ? null : 2,
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              text: "Pendaftaran Anggota",
-                              style: AppTypo.overline.copyWith(fontSize: 12),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     launch("https://apmikimdo.org/");
+              //   },
+              //   child: Container(
+              //     width: 73,
+              //     height: 80,
+              //     child: Column(
+              //       children: [
+              //         Image.asset(
+              //           AppImg.ic_bisniso_png,
+              //           fit: BoxFit.contain,
+              //           height: 35,
+              //         ),
+              //         SizedBox(
+              //           height: 7.5,
+              //         ),
+              //         FittedBox(
+              //           child: Container(
+              //             width: 82,
+              //             child: RichText(
+              //               maxLines: kIsWeb ? null : 2,
+              //               textAlign: TextAlign.center,
+              //               text: TextSpan(
+              //                 text: "Pendaftaran Anggota",
+              //                 style: AppTypo.overline.copyWith(fontSize: 12),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               Container(
                 width: 73,
                 height: 80,

@@ -98,16 +98,16 @@ class _BsDeliveryAddressItemState extends State<BsDeliveryAddressItem> {
             }
             if (state is FetchSelectedRecipentFailure) {
               ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      margin: EdgeInsets.zero,
-                      duration: Duration(seconds: 2),
-                      content: Text('Terjadi Kesalahan'),
-                      backgroundColor: Colors.red,
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(
+                    margin: EdgeInsets.zero,
+                    duration: Duration(seconds: 2),
+                    content: Text('Terjadi Kesalahan'),
+                    backgroundColor: Colors.red,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
             }
           },
           child: Padding(
@@ -301,11 +301,13 @@ class _BsDeliveryAddressItemState extends State<BsDeliveryAddressItem> {
                                                             decoration:
                                                                 BoxDecoration(
                                                               border: Border.all(
-                                                                  color: recipentMainAddress != null && recipentMainAddress.isMainAddress ==
+                                                                  color: recipentMainAddress != null &&
+                                                                          recipentMainAddress.isMainAddress ==
                                                                               1 &&
                                                                           state.recipent[index].isMainAddress ==
                                                                               1
-                                                                      ? Color(0xFFFEE2F6)
+                                                                      ? Color(
+                                                                          0xFFFEF5E2)
                                                                       : Colors
                                                                           .grey[
                                                                               300]
@@ -316,10 +318,15 @@ class _BsDeliveryAddressItemState extends State<BsDeliveryAddressItem> {
                                                                   BorderRadius
                                                                       .circular(
                                                                           8),
-                                                              color: recipentMainAddress != null && recipentMainAddress.isMainAddress == 1 &&
+                                                              color: recipentMainAddress !=
+                                                                          null &&
+                                                                      recipentMainAddress
+                                                                              .isMainAddress ==
+                                                                          1 &&
                                                                       state.recipent[index].isMainAddress ==
                                                                           1
-                                                                  ? Color(0xFFFEE2F6)
+                                                                  ? Color(
+                                                                      0xFFFEF5E2)
                                                                   : Colors
                                                                       .white,
                                                             ),

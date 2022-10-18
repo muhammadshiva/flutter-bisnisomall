@@ -374,6 +374,7 @@ class _TarikSaldoScreenState extends State<TarikSaldoScreen> {
                     RoundedButton.contained(
                         label: "Tarik",
                         isUpperCase: false,
+                        textColor: Colors.white,
                         onPressed: () {
                           if (_selectedPaymentIdx == null) {
                             setState(() {
@@ -382,18 +383,17 @@ class _TarikSaldoScreenState extends State<TarikSaldoScreen> {
                           }
                           if (_selectedPaymentIdx != -1) {
                             if (_formKey.currentState.validate()) {
-                            AppExt.pushScreen(
-                                context,
-                                TarikSaldoDetailScreen(
-                                  walletWithdrawData: WalletWithdrawData(
-                                      saldo: int.parse(_saldoCtrl.text),
-                                      noRek: int.parse(_noRekCtrl.text),
-                                      paymentMethod: _paymentMethod,
-                                      atasNama: _atasNamaCtrl.text),
-                                ));
+                              AppExt.pushScreen(
+                                  context,
+                                  TarikSaldoDetailScreen(
+                                    walletWithdrawData: WalletWithdrawData(
+                                        saldo: int.parse(_saldoCtrl.text),
+                                        noRek: int.parse(_noRekCtrl.text),
+                                        paymentMethod: _paymentMethod,
+                                        atasNama: _atasNamaCtrl.text),
+                                  ));
+                            }
                           }
-                          }
-                          
                         })
                   ],
                 ),

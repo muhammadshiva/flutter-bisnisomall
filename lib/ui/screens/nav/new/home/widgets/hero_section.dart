@@ -64,7 +64,9 @@ class HeroSection extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              _carouselPromo,
+              Image.asset('images/img_banner.png'),
+              // BACKEND PICTURE
+              // _carouselPromo,
               SizedBox(
                 height: 40,
               ),

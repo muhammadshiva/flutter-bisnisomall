@@ -57,6 +57,7 @@ class BsConfirmation {
                             isUpperCase: false,
                             isCompact: true,
                             label: "Tidak",
+                            textColor: Colors.white,
                             onPressed: () => Navigator.pop(context),
                           ),
                         ),

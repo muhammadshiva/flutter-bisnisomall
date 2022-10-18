@@ -49,12 +49,11 @@ class _TarikSaldoDetailScreenState extends State<TarikSaldoDetailScreen> {
                 context,
                 TarikSaldoVerifikasiScreen(
                   walletWithdrawData: WalletWithdrawData(
-                    saldo: walletWithdrawData.saldo,
-                    noRek: walletWithdrawData.noRek,
-                    paymentMethod: walletWithdrawData.paymentMethod,
-                    atasNama: walletWithdrawData.atasNama,
-                    logId: state.data.logId
-                  ),
+                      saldo: walletWithdrawData.saldo,
+                      noRek: walletWithdrawData.noRek,
+                      paymentMethod: walletWithdrawData.paymentMethod,
+                      atasNama: walletWithdrawData.atasNama,
+                      logId: state.data.logId),
                 ));
           }
         },

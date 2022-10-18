@@ -170,7 +170,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     width: 40,
                   ),
             title: "Supplier",
-            subtitle: "Tawarkan hasil produk ke APMIKIMMDO"),
+            subtitle: "Tawarkan hasil produk anda ke Bisniso"),
       ];
     else if (condition1) {
       _roleItem = [];
@@ -204,7 +204,7 @@ class _AccountScreenState extends State<AccountScreen> {
             width: 40,
           ),
           title: "Supplier",
-          subtitle: "Tawarkan hasil produk ke APMIKIMMDO",
+          subtitle: "Tawarkan hasil produk anda ke Bisniso",
         ),
       );
     } else if (condition2) {
@@ -242,7 +242,7 @@ class _AccountScreenState extends State<AccountScreen> {
             width: 40,
           ),
           title: "Supplier",
-          subtitle: "Tawarkan hasil produk ke APMIKIMMDO",
+          subtitle: "Tawarkan hasil produk anda ke Bisniso",
         ),
       );
     } else {
@@ -277,7 +277,7 @@ class _AccountScreenState extends State<AccountScreen> {
             width: 40,
           ),
           title: "Supplier",
-          subtitle: "Tawarkan hasil produk ke APMIKIMMDO super apps",
+          subtitle: "Tawarkan hasil produk anda ke Bisniso",
         ),
       );
     }

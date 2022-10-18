@@ -23,8 +23,8 @@ class GreenBG extends StatelessWidget {
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [
-                Color(0xFFFF658B),
-                Color(0xFFF4406F),
+                Color(0xFFF6B229),
+                Color(0xFFFFDA79),
               ],
             )),
         child: SizedBox(

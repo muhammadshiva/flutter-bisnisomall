@@ -88,10 +88,10 @@ class _UpdateAccountListRecipentItemState
                   ? widget.recipentMainAddress != null &&
                           widget.recipentMainAddress.isMainAddress == 1 &&
                           recipentData.isMainAddress == 1
-                      ? Color(0xFFFEE2F6)
+                      ? Color(0xFFFEF5E2)
                       : Colors.white
                   : recipentId == recipentData.id
-                      ? Color(0xFFFEE2F6)
+                      ? Color(0xFFFEF5E2)
                       : Colors.white,
               border: recipentId == 0
                   ? widget.recipentMainAddress != null &&

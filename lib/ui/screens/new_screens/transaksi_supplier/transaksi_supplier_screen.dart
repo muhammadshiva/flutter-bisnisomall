@@ -15,16 +15,15 @@ import 'package:marketplace/utils/extensions.dart' as AppExt;
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 import 'package:marketplace/utils/colors.dart' as AppColor;
 
-
 class TransaksiSupplierScreen extends StatefulWidget {
   const TransaksiSupplierScreen({Key key}) : super(key: key);
 
   @override
-  _TransaksiSupplierScreenState createState() => _TransaksiSupplierScreenState();
+  _TransaksiSupplierScreenState createState() =>
+      _TransaksiSupplierScreenState();
 }
 
 class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -40,8 +39,8 @@ class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
         elevation: 0,
         centerTitle: false,
         leading: Padding(
-            padding: const EdgeInsets.only(
-                bottom: 11, top: 4, left: 10, right: 10),
+            padding:
+                const EdgeInsets.only(bottom: 11, top: 4, left: 10, right: 10),
             child: Icon(Icons.arrow_back, color: Colors.black)),
         titleSpacing: 0,
         title: Container(
@@ -84,38 +83,34 @@ class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
                   onPressed: () {
                     AppExt.pushScreen(
                       context,
-                      BlocProvider.of<UserDataCubit>(context).state.user !=
-                          null
+                      BlocProvider.of<UserDataCubit>(context).state.user != null
                           ? CartScreen()
                           : SignInScreen(),
                     );
                   }),
-              BlocProvider.of<UserDataCubit>(context).state.countCart !=
-                  null &&
-                  BlocProvider.of<UserDataCubit>(context)
-                      .state
-                      .countCart >
-                      0
+              BlocProvider.of<UserDataCubit>(context).state.countCart != null &&
+                      BlocProvider.of<UserDataCubit>(context).state.countCart >
+                          0
                   ? new Positioned(
-                right: 6,
-                top: -10,
-                child: Chip(
-                  shape: CircleBorder(side: BorderSide.none),
-                  backgroundColor: AppColor.red,
-                  padding: EdgeInsets.zero,
-                  labelPadding: BlocProvider.of<UserDataCubit>(context)
-                      .state
-                      .countCart >
-                      99
-                      ? EdgeInsets.all(2)
-                      : EdgeInsets.all(4),
-                  label: Text(
-                    "${BlocProvider.of<UserDataCubit>(context).state.countCart}",
-                    style: AppTypo.overlineInv.copyWith(fontSize: 8),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              )
+                      right: 6,
+                      top: -10,
+                      child: Chip(
+                        shape: CircleBorder(side: BorderSide.none),
+                        backgroundColor: AppColor.red,
+                        padding: EdgeInsets.zero,
+                        labelPadding: BlocProvider.of<UserDataCubit>(context)
+                                    .state
+                                    .countCart >
+                                99
+                            ? EdgeInsets.all(2)
+                            : EdgeInsets.all(4),
+                        label: Text(
+                          "${BlocProvider.of<UserDataCubit>(context).state.countCart}",
+                          style: AppTypo.overlineInv.copyWith(fontSize: 8),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
                   : SizedBox.shrink(),
             ],
           ),
@@ -132,8 +127,8 @@ class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
                 child: FilterSupplierList(),
               ),
               Expanded(
-                child:
-                BlocBuilder<FetchTransactionSupplierCubit, FetchTransactionSupplierState>(
+                child: BlocBuilder<FetchTransactionSupplierCubit,
+                    FetchTransactionSupplierState>(
                   builder: (context, state) {
                     if (state is FetchTransactionSupplierSuccess) {
                       if (state.order.isEmpty) {
@@ -141,7 +136,7 @@ class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
                           child: EmptyData(
                             title: "Transaksi anda kosong",
                             subtitle:
-                            "Silahkan pilih produk yang anda inginkan untuk mengisinya",
+                                "Silahkan pilih produk yang anda inginkan untuk mengisinya",
                             labelBtn: "Mulai Belanja",
                             onClick: () {
                               BlocProvider.of<BottomNavCubit>(context)
@@ -176,7 +171,9 @@ class _TransaksiSupplierScreenState extends State<TransaksiSupplierScreen> {
                           child: ErrorFetch(
                             message: state.message,
                             onButtonPressed: () {
-                              context.read<FetchTransactionSupplierCubit>().fetch();
+                              context
+                                  .read<FetchTransactionSupplierCubit>()
+                                  .fetch();
                             },
                           ),
                         );

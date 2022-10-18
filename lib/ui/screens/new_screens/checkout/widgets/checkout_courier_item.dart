@@ -335,6 +335,7 @@ class _CourierItemState extends State<CourierItem> {
                   RoundedButton.contained(
                       label: "Pilih",
                       isUpperCase: false,
+                      textColor: Colors.white,
                       onPressed: _selectedCourierId != -1
                           ? () {
                               widget.onChooseCourier(

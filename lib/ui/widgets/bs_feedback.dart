@@ -337,6 +337,7 @@ class BSFeedback {
                             label: "Lihat keranjang",
                             isUpperCase: false,
                             isSmall: true,
+                            textColor: Colors.white,
                             onPressed: () {
                               if (kIsWeb) {
                                 context.beamToNamed('/wpp/cart');
@@ -441,6 +442,7 @@ class BottomSheetFeedbackAddCart {
                         label: "Lihat keranjang",
                         isUpperCase: false,
                         isSmall: true,
+                        textColor: Colors.white,
                         onPressed: () {
                           AppExt.popScreen(context);
                           kIsWeb && isWarung

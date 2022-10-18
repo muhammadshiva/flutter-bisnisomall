@@ -59,12 +59,12 @@ class JoinUserSuccessScreen extends StatelessWidget {
                     ),
                     userType == UserType.reseller
                         ? Text(
-                            "Selamat anda telah berhasil menjadi reseller PanenPanen",
+                            "Selamat anda telah berhasil menjadi reseller Bisnisomall",
                             textAlign: TextAlign.center,
                             style: AppTypo.LatoBold.copyWith(
                                 fontSize: 18, color: AppColor.primary))
                         : Text(
-                            "Selamat anda telah berhasil menjadi supplier PanenPanen",
+                            "Selamat anda telah berhasil menjadi supplier Bisnisomall",
                             textAlign: TextAlign.center,
                             style: AppTypo.LatoBold.copyWith(
                                 fontSize: 18, color: AppColor.primary)),
@@ -108,7 +108,8 @@ class JoinUserSuccessScreen extends StatelessWidget {
                               BlocProvider.of<BottomNavCubit>(context)
                                   .navItemTapped(3);
                               AppExt.pushScreen(
-                                  context, ProducerDashboardScreen(
+                                  context,
+                                  ProducerDashboardScreen(
                                     isSupplier: true,
                                   ));
                             })
