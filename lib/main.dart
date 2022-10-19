@@ -296,7 +296,7 @@ class _MyAppState extends State<MyApp> {
               title: config.appName,
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                primarySwatch: Colors.pink,
+                primarySwatch: Colors.yellow,
                 primaryColor: AppColor.DefTheme.primary,
                 primaryColorBrightness: Brightness.light,
                 scaffoldBackgroundColor: Colors.white,
