@@ -6,6 +6,7 @@ const d_wave_tr_p = "images/decorations/d_wave_tr.png";
 // icon
 const ic_bisniso = "images/icons/ic_bisniso.svg";
 const ic_bisniso_png = "images/icons/ic_bisniso.png";
+const ic_bisnisomall_png = "images/icons/ic_bisnisomall.png";
 const ic_allcategory = "images/icons/allcategories.svg";
 const ic_shop = "images/icons/ic_shop.svg";
 const ic_sendorder = "images/icons/ic_sendorder.svg";
