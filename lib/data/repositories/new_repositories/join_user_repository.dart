@@ -421,7 +421,7 @@ class JoinUserRepository {
     }
   }
 
-  //=========================== WARUNG PANEN / RESELLER ===========================
+  //=========================== BISNISO / RESELLER ===========================
 
   Future<GeneralResponse> addProduct({@required int productId}) async {
     final _token = await _authenticationRepository.getToken();

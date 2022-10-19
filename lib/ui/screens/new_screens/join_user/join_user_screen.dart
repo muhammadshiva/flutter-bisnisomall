@@ -27,7 +27,7 @@ class JoinUserScreen extends StatefulWidget {
 
 class _JoinUserScreenState extends State<JoinUserScreen> {
   final AuthenticationRepository _authRepo = AuthenticationRepository();
-  
+
   UserDataCubit _userDataCubit;
 
   bool isReseller = false;
@@ -62,14 +62,14 @@ class _JoinUserScreenState extends State<JoinUserScreen> {
   }
 
   void _checkUser() async {
-      if (await _authRepo.hasToken()) {
-        await BlocProvider.of<UserDataCubit>(context).loadUser();
-      }
+    if (await _authRepo.hasToken()) {
+      await BlocProvider.of<UserDataCubit>(context).loadUser();
     }
+  }
 
   void updateState() {
     joinUserType = widget.userType == UserType.reseller
-        ? "Warung Panen"
+        ? "Reseller"
         : widget.userType == UserType.supplier
             ? "Supplier"
             : "No data";
@@ -131,16 +131,16 @@ class _JoinUserScreenState extends State<JoinUserScreen> {
             if (widget.userType == UserType.reseller) {
               BlocProvider.of<BottomNavCubit>(context).navItemTapped(1);
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text("Registerasi sukses"),
-              backgroundColor: Colors.green,
-            ));
-            }else{
+                content: Text("Registerasi sukses"),
+                backgroundColor: Colors.green,
+              ));
+            } else {
               BlocProvider.of<BottomNavCubit>(context).navItemTapped(3);
               AppExt.pushScreen(
-                context,
-                JoinUserSuccessScreen(
-                  userType: widget.userType,
-                ));
+                  context,
+                  JoinUserSuccessScreen(
+                    userType: widget.userType,
+                  ));
             }
           }
           if (state is RegisterSupplierResellerFailure) {
@@ -288,13 +288,14 @@ class _JoinUserScreenState extends State<JoinUserScreen> {
                         ),
                       ),
                       SizedBox(height: 16),
-                      _userDataCubit.state.user?.reseller == null && widget.userType == UserType.supplier
+                      _userDataCubit.state.user?.reseller == null &&
+                              widget.userType == UserType.supplier
                           ? Row(
                               children: [
                                 Expanded(
                                   flex: 8,
                                   child: Text(
-                                    "Apakah anda juga ingin mendaftar sebagai warung panen?",
+                                    "Apakah anda juga ingin mendaftar sebagai reseller?",
                                     style: AppTypo.caption,
                                   ),
                                 ),
@@ -317,11 +318,11 @@ class _JoinUserScreenState extends State<JoinUserScreen> {
                                 SizedBox(
                                   height: 16,
                                 ),
-                                Text("Nama Warung Anda"),
+                                Text("Nama Toko Anda"),
                                 SizedBox(height: 8),
                                 EditText(
                                   controller: namaSellerController,
-                                  hintText: "Nama Warung",
+                                  hintText: "Nama Toko",
                                 ),
                               ],
                             )

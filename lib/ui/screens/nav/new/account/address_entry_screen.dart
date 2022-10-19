@@ -61,7 +61,12 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
   @override
   void initState() {
     isUpdateEntry = widget.recipent != null;
-    recipentLocationPicker = isUpdateEntry ? RecipentLocationPicker(address: widget.recipent.address, latitude: widget.recipent.latitude, longitude: widget.recipent.longitude) : null;
+    recipentLocationPicker = isUpdateEntry
+        ? RecipentLocationPicker(
+            address: widget.recipent.address,
+            latitude: widget.recipent.latitude,
+            longitude: widget.recipent.longitude)
+        : null;
     _addRecipentCubit = AddRecipentCubit();
     _editRecipentCubit = EditRecipentCubit();
 
@@ -71,7 +76,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
         text: isUpdateEntry
             ? AppExt.removeCodePhone(widget.recipent.phone)
             : null);
-    // _addressController = 
+    // _addressController =
     // TextEditingController(
     //     text: isUpdateEntry ? widget.recipent.address : null);
     _postalCodeController = TextEditingController(
@@ -155,7 +160,9 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
               recipentId: widget.recipent.id,
               name: _nameController.text.trim(),
               phone: int.parse('62${_phoneNumberController.text}'),
-              address: isUpdateEntry ? widget.recipent.address : recipentLocationPicker.address,
+              address: isUpdateEntry
+                  ? widget.recipent.address
+                  : recipentLocationPicker.address,
               email: _emailController.text.trim(),
               subdistrictId:
                   selectedSubdistrictId ?? widget.recipent.subdistrictId,
@@ -241,7 +248,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                           margin: EdgeInsets.zero,
                           duration: Duration(seconds: 2),
                           content: Text('Tambah alamat sukses'),
-                          backgroundColor: Colors.green,
+                          backgroundColor: AppColor.primary,
                           behavior: SnackBarBehavior.floating,
                         ),
                       );
@@ -345,7 +352,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                     height: !isUpdateEntry ? 25 : 0,
                                   ),
                                   InputLabel(
-                                      title: "Nama Penerima",required: true),
+                                      title: "Nama Penerima", required: true),
                                   SizedBox(height: 8),
                                   EditText(
                                     hintText: "Nama Penerima",
@@ -357,7 +364,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                     height: 15,
                                   ),
                                   InputLabel(
-                                      title: "No Telepon",required: true),
+                                      title: "No Telepon", required: true),
                                   SizedBox(height: 8),
                                   EditText(
                                     keyboardType: TextInputType.phone,
@@ -375,7 +382,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                   SizedBox(
                                     height: 15,
                                   ),
-                                  InputLabel(title: "Email",required: false),
+                                  InputLabel(title: "Email", required: false),
                                   SizedBox(height: 8),
                                   EditText(
                                     hintText: "Email anda",
@@ -387,7 +394,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                     height: 15,
                                   ),
                                   InputLabel(
-                                      title: "Kecamatan",required: true),
+                                      title: "Kecamatan", required: true),
                                   SizedBox(height: 8),
                                   ListTile(
                                     contentPadding: EdgeInsets.zero,
@@ -435,7 +442,7 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                   SizedBox(
                                     height: 15,
                                   ),
-                                  InputLabel(title: "Kodepos",required: true),
+                                  InputLabel(title: "Kodepos", required: true),
                                   SizedBox(height: 8),
                                   EditText(
                                     hintText: "Kodepos",
@@ -458,38 +465,50 @@ class _AddressEntryScreenState extends State<AddressEntryScreen> {
                                   // SizedBox(
                                   //   height: 15,
                                   // ),
-                                  InputLabel(title: "Detail Alamat", required: false),
+                                  InputLabel(
+                                      title: "Detail Alamat", required: false),
                                   SizedBox(height: 8),
                                   EditText(
-                                    hintText: "Pagar hitam sebelah warung mie ayam",
+                                    hintText:
+                                        "Pagar hitam sebelah warung mie ayam",
                                     inputType: InputType.field,
                                     controller: this._noteController,
                                   ),
                                   SizedBox(height: 8),
                                   Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: !isPickerLocationValid ? AppColor.danger : AppColor.silverFlashSale,width: !isPickerLocationValid ? 1 : 2)
-                                    ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: !isPickerLocationValid
+                                                ? AppColor.danger
+                                                : AppColor.silverFlashSale,
+                                            width: !isPickerLocationValid
+                                                ? 1
+                                                : 2)),
                                     child: ListTile(
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 6),
+                                      contentPadding:
+                                          EdgeInsets.symmetric(horizontal: 6),
                                       leading: Icon(
-                                          Icons.location_on_outlined,
-                                          color: Colors.grey,
-                                        ),
+                                        Icons.location_on_outlined,
+                                        color: Colors.grey,
+                                      ),
                                       minLeadingWidth: 0,
                                       title: Text(
-                                            recipentLocationPicker != null ?
-                                            recipentLocationPicker.address :
-                                            "Tentukan Titik Lokasi",style: AppTypo.caption
-                                                    .copyWith(color: AppColor.textPrimary),),
+                                        recipentLocationPicker != null
+                                            ? recipentLocationPicker.address
+                                            : "Tentukan Titik Lokasi",
+                                        style: AppTypo.caption.copyWith(
+                                            color: AppColor.textPrimary),
+                                      ),
                                       trailing: Icon(
                                         Icons.chevron_right,
                                         color: AppColor.grey,
                                       ),
-                                      onTap: (){
-                                        AppExt.pushScreen(context, AddressLocationPickerScreen(
-                                          onLocationPicker: (RecipentLocationPicker value){
+                                      onTap: () {
+                                        AppExt.pushScreen(context,
+                                            AddressLocationPickerScreen(
+                                          onLocationPicker:
+                                              (RecipentLocationPicker value) {
                                             setState(() {
                                               recipentLocationPicker = value;
                                             });

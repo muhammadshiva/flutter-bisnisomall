@@ -42,7 +42,7 @@ class MyShopNotAvailable extends StatelessWidget {
                 height: 18,
               ),
               Text(
-                "Bergabunglah menjadi warung panen kami untuk membuka toko dan raih penghasilan tambahan hingga jutaan rupiah",
+                "Bergabunglah menjadi reseller kami untuk membuka toko dan raih penghasilan tambahan hingga jutaan rupiah",
                 textAlign: TextAlign.center,
                 style: AppTypo.body2Lato.copyWith(color: AppColor.grey),
               ),
@@ -50,16 +50,19 @@ class MyShopNotAvailable extends StatelessWidget {
                 height: 32,
               ),
               RoundedButton.contained(
-                  label: "Gabung Warung Panen",
+                  label: "Gabung Reseller",
                   isUpperCase: false,
                   textColor: AppColor.textPrimaryInverted,
                   onPressed: () {
-                    if (BlocProvider.of<UserDataCubit>(context).state.user != null) {
+                    if (BlocProvider.of<UserDataCubit>(context).state.user !=
+                        null) {
                       BlocProvider.of<BottomNavCubit>(context).navItemTapped(3);
-                      AppExt.pushScreen(context, JoinUserScreen(
-                                userType: UserType.reseller,
-                              ));
-                    }else{
+                      AppExt.pushScreen(
+                          context,
+                          JoinUserScreen(
+                            userType: UserType.reseller,
+                          ));
+                    } else {
                       AppExt.pushScreen(context, SignInScreen());
                     }
                   }),
