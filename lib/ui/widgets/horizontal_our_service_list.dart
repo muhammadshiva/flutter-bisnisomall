@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplace/ui/widgets/bs_confirmation.dart';
 import 'package:marketplace/utils/colors.dart' as AppColor;
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 import 'package:marketplace/utils/images.dart' as AppImg;
@@ -17,7 +18,10 @@ class OurServiceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _screenWidth = MediaQuery.of(context).size.width;
+    final double _screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
 
     // TODO: implement build
     return Column(
@@ -38,21 +42,21 @@ class OurServiceList extends StatelessWidget {
               ),
               viewAll != null
                   ? Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: viewAll,
-                        borderRadius: BorderRadius.circular(5),
-                        child: Text(
-                          "Lihat Semua",
-                          textAlign: TextAlign.right,
-                          style: AppTypo.LatoBold.copyWith(
-                              color: AppColor.primary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              decoration: TextDecoration.underline),
-                        ),
-                      ),
-                    )
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: viewAll,
+                  borderRadius: BorderRadius.circular(5),
+                  child: Text(
+                    "Lihat Semua",
+                    textAlign: TextAlign.right,
+                    style: AppTypo.LatoBold.copyWith(
+                        color: AppColor.primary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 13,
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
+              )
                   : SizedBox.shrink(),
             ],
           ),
@@ -102,149 +106,173 @@ class OurServiceList extends StatelessWidget {
               //     ),
               //   ),
               // ),
-              Container(
-                width: 73,
-                height: 80,
-                child: Column(
-                  children: [
-                    Image.asset(
-                      AppImg.ic_mui,
-                      fit: BoxFit.contain,
-                      height: 35,
-                    ),
-                    SizedBox(
-                      height: 7.5,
-                    ),
-                    FittedBox(
-                      child: Container(
-                        width: 82,
-                        child: RichText(
-                          maxLines: kIsWeb ? null : 2,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "Sertifikasi Halal",
-                            style: AppTypo.overline.copyWith(fontSize: 12),
+              GestureDetector(
+                onTap: () =>
+                    BsConfirmation().warning(
+                        context: context,
+                        title: "Nantikan fitur terbaru dari kami."),
+                child: Container(
+                  width: 73,
+                  height: 80,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        AppImg.ic_mui,
+                        fit: BoxFit.contain,
+                        height: 35,
+                      ),
+                      SizedBox(
+                        height: 7.5,
+                      ),
+                      FittedBox(
+                        child: Container(
+                          width: 82,
+                          child: RichText(
+                            maxLines: kIsWeb ? null : 2,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "Sertifikasi Halal",
+                              style: AppTypo.overline.copyWith(fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                width: 73,
-                height: 80,
-                child: Column(
-                  children: [
-                    Image.asset(
-                      AppImg.ic_bpom,
-                      fit: BoxFit.contain,
-                      height: 35,
-                    ),
-                    SizedBox(
-                      height: 7.5,
-                    ),
-                    FittedBox(
-                      child: Container(
-                        width: 82,
-                        child: RichText(
-                          maxLines: kIsWeb ? null : 2,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "Izin BPOM",
-                            style: AppTypo.overline.copyWith(fontSize: 12),
+              GestureDetector(
+                onTap: () => BsConfirmation().warning(
+                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                child: Container(
+                  width: 73,
+                  height: 80,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        AppImg.ic_bpom,
+                        fit: BoxFit.contain,
+                        height: 35,
+                      ),
+                      SizedBox(
+                        height: 7.5,
+                      ),
+                      FittedBox(
+                        child: Container(
+                          width: 82,
+                          child: RichText(
+                            maxLines: kIsWeb ? null : 2,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "Izin BPOM",
+                              style: AppTypo.overline.copyWith(fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                width: 73,
-                height: 80,
-                child: Column(
-                  children: [
-                    Image.asset(
-                      AppImg.ic_nib,
-                      fit: BoxFit.contain,
-                      height: 35,
-                    ),
-                    SizedBox(
-                      height: 7.5,
-                    ),
-                    FittedBox(
-                      child: Container(
-                        width: 82,
-                        child: RichText(
-                          maxLines: kIsWeb ? null : 2,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "Nomor Induk Berusaha",
-                            style: AppTypo.overline.copyWith(fontSize: 12),
+              GestureDetector(
+                onTap: () => BsConfirmation().warning(
+                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                child: Container(
+                  width: 73,
+                  height: 80,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        AppImg.ic_nib,
+                        fit: BoxFit.contain,
+                        height: 35,
+                      ),
+                      SizedBox(
+                        height: 7.5,
+                      ),
+                      FittedBox(
+                        child: Container(
+                          width: 82,
+                          child: RichText(
+                            maxLines: kIsWeb ? null : 2,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "Nomor Induk Berusaha",
+                              style: AppTypo.overline.copyWith(fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                width: 73,
-                height: 80,
-                child: Column(
-                  children: [
-                    Image.asset(
-                      AppImg.ic_pirt,
-                      fit: BoxFit.contain,
-                      height: 35,
-                    ),
-                    SizedBox(
-                      height: 7.5,
-                    ),
-                    FittedBox(
-                      child: Container(
-                        width: 82,
-                        child: RichText(
-                          maxLines: kIsWeb ? null : 2,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "SPP-IRT",
-                            style: AppTypo.overline.copyWith(fontSize: 12),
+              GestureDetector(
+                onTap: () =>
+                    BsConfirmation().warning(
+                        context: context,
+                        title: "Nantikan fitur terbaru dari kami."),
+                child: Container(
+                  width: 73,
+                  height: 80,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        AppImg.ic_pirt,
+                        fit: BoxFit.contain,
+                        height: 35,
+                      ),
+                      SizedBox(
+                        height: 7.5,
+                      ),
+                      FittedBox(
+                        child: Container(
+                          width: 82,
+                          child: RichText(
+                            maxLines: kIsWeb ? null : 2,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "SPP-IRT",
+                              style: AppTypo.overline.copyWith(fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                width: 73,
-                height: 80,
-                child: Column(
-                  children: [
-                    Image.asset(
-                      AppImg.ic_kopukm,
-                      fit: BoxFit.contain,
-                      height: 35,
-                    ),
-                    SizedBox(
-                      height: 7.5,
-                    ),
-                    FittedBox(
-                      child: Container(
-                        width: 82,
-                        child: RichText(
-                          maxLines: kIsWeb ? null : 2,
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text: "Pendaftaran Merk",
-                            style: AppTypo.overline.copyWith(fontSize: 12),
+              GestureDetector(
+                onTap: () => BsConfirmation().warning(
+                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                child: Container(
+                  width: 73,
+                  height: 80,
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        AppImg.ic_kopukm,
+                        fit: BoxFit.contain,
+                        height: 35,
+                      ),
+                      SizedBox(
+                        height: 7.5,
+                      ),
+                      FittedBox(
+                        child: Container(
+                          width: 82,
+                          child: RichText(
+                            maxLines: kIsWeb ? null : 2,
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              text: "Pendaftaran Merk",
+                              style: AppTypo.overline.copyWith(fontSize: 12),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
