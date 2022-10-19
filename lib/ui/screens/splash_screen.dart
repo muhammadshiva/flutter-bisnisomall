@@ -28,19 +28,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final config = AAppConfig.of(context);
-    final String imagePath = AppImg.img_logo_light;
+    final String imagePath = AppImg.img_logo;
     final double _screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Color(0xFFFCCB0A),
-            Color(0xFFF6B229),
-          ],
-        ),
-      ),
+      decoration: BoxDecoration(color: AppColor.white),
       child: Scaffold(
         backgroundColor: AppColor.transparent,
         body: Center(
@@ -66,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: CircularProgressIndicator(
                       strokeWidth: 3.5,
                       valueColor:
-                          new AlwaysStoppedAnimation<Color>(AppColor.white),
+                          new AlwaysStoppedAnimation<Color>(AppColor.primary),
                     ),
                   ),
                 ],
