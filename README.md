@@ -1,5 +1,5 @@
 
-# BISNISOMALL super apps (WEB & APP)
+# BISNISOMALL (WEB & APP)
 
 ## Run Locally
 
