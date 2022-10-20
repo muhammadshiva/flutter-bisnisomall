@@ -82,8 +82,7 @@ class WppHorizontalProductList extends StatelessWidget {
                             style: AppTypo.LatoBold.copyWith(
                                 color: AppColor.success,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                decoration: TextDecoration.underline),
+                                fontSize: 13),
                           ),
                         ),
                       )

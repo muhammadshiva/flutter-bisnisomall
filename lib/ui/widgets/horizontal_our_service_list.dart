@@ -18,10 +18,7 @@ class OurServiceList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double _screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final double _screenWidth = MediaQuery.of(context).size.width;
 
     // TODO: implement build
     return Column(
@@ -42,21 +39,21 @@ class OurServiceList extends StatelessWidget {
               ),
               viewAll != null
                   ? Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: viewAll,
-                  borderRadius: BorderRadius.circular(5),
-                  child: Text(
-                    "Lihat Semua",
-                    textAlign: TextAlign.right,
-                    style: AppTypo.LatoBold.copyWith(
-                        color: AppColor.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 13,
-                        decoration: TextDecoration.underline),
-                  ),
-                ),
-              )
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: viewAll,
+                        borderRadius: BorderRadius.circular(5),
+                        child: Text(
+                          "Lihat Semua",
+                          textAlign: TextAlign.right,
+                          style: AppTypo.LatoBold.copyWith(
+                            color: AppColor.primary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    )
                   : SizedBox.shrink(),
             ],
           ),
@@ -107,10 +104,9 @@ class OurServiceList extends StatelessWidget {
               //   ),
               // ),
               GestureDetector(
-                onTap: () =>
-                    BsConfirmation().warning(
-                        context: context,
-                        title: "Nantikan fitur terbaru dari kami."),
+                onTap: () => BsConfirmation().warning(
+                    context: context,
+                    title: "Nantikan fitur terbaru dari kami."),
                 child: Container(
                   width: 73,
                   height: 80,
@@ -143,7 +139,8 @@ class OurServiceList extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => BsConfirmation().warning(
-                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                    context: context,
+                    title: "Nantikan fitur terbaru dari kami."),
                 child: Container(
                   width: 73,
                   height: 80,
@@ -176,7 +173,8 @@ class OurServiceList extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => BsConfirmation().warning(
-                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                    context: context,
+                    title: "Nantikan fitur terbaru dari kami."),
                 child: Container(
                   width: 73,
                   height: 80,
@@ -208,10 +206,9 @@ class OurServiceList extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () =>
-                    BsConfirmation().warning(
-                        context: context,
-                        title: "Nantikan fitur terbaru dari kami."),
+                onTap: () => BsConfirmation().warning(
+                    context: context,
+                    title: "Nantikan fitur terbaru dari kami."),
                 child: Container(
                   width: 73,
                   height: 80,
@@ -244,7 +241,8 @@ class OurServiceList extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () => BsConfirmation().warning(
-                    context: context, title: "Nantikan fitur terbaru dari kami."),
+                    context: context,
+                    title: "Nantikan fitur terbaru dari kami."),
                 child: Container(
                   width: 73,
                   height: 80,

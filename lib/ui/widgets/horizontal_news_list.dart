@@ -38,9 +38,7 @@ class NewsList extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: _screenWidth * (5 / 100),
-            vertical: 16
-          ),
+              horizontal: _screenWidth * (5 / 100), vertical: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -61,10 +59,10 @@ class NewsList extends StatelessWidget {
                           "Lihat Semua",
                           textAlign: TextAlign.right,
                           style: AppTypo.LatoBold.copyWith(
-                              color: AppColor.appPrimary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              decoration: TextDecoration.underline),
+                            color: AppColor.appPrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                     )
