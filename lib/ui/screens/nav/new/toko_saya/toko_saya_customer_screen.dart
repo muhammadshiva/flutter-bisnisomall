@@ -101,7 +101,7 @@ class _MyShopCustomerScreenState extends State<MyShopCustomerScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Warung - ${userDataCubit.reseller.name}",
+                            Text("Reseller - ${userDataCubit.reseller.name}",
                                 style: AppTypo.subtitle2.copyWith(
                                     fontSize: 16, fontWeight: FontWeight.w700)),
                             SizedBox(
