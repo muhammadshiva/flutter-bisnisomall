@@ -353,7 +353,7 @@ void shareProductImageText(
   imgFile.writeAsBytesSync(response.bodyBytes);
   Share.shareFiles(['$documentDirectory/product.png'],
       text:
-          "Produk $nameProduk - https://reseller.apmikimmdo.com/wpp/productdetail/${userData.reseller.slug}/$productSlug/$idProduct");
+          "Produk $nameProduk - https://store.bisnisomall.com/wpp/productdetail/${userData.reseller.slug}/$productSlug/$idProduct");
 }
 
 void shareProductImage(
@@ -389,7 +389,7 @@ void shareProductText(
           : null;
 
   Share.share(
-      "Produk $nameProduk - https://reseller.apmikimmdo.com/wpp/productdetail/${userData.reseller.slug}/$productSlug/$idProduct");
+      "Produk $nameProduk - https://store.bisnisomall.com/wpp/productdetail/${userData.reseller.slug}/$productSlug/$idProduct");
 }
 
 String deleteDotInPrice(String value) {

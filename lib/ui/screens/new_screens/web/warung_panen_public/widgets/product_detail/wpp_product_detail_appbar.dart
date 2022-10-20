@@ -121,8 +121,11 @@ class WppProductDetailAppbar extends StatelessWidget {
                   onTap: () {
                     if (product.stock > 0) {
                       if (kIsWeb) {
-                        _handleCopy(context, "https://warung.panenpanen.id/wpp/productdetail/${product.reseller.slug}/${product.slug}/${product.id}", "Link produk tersalin");
-                      }else{
+                        _handleCopy(
+                            context,
+                            "https://store.bisnisomall.com/wpp/productdetail/${product.reseller.slug}/${product.slug}/${product.id}",
+                            "Link produk tersalin");
+                      } else {
                         context.read<BagikanProdukCubit>().reset();
                       WppProductDetailBsBagikanProduk().showBsReview(context,product,null,false);
                       }

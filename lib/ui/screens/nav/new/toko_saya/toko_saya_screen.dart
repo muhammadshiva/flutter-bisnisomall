@@ -75,7 +75,7 @@ class _TokoSayaScreenState extends State<TokoSayaScreen> {
 
   void shareShop(String nameShop, String slug) {
     Share.share(
-        "Yuk belanja di *${nameShop ?? 'user'}* Banyak produk baru dan promo lho! Klik disini \n https://reseller.apmikimmdo.com/wpp/dashboard/$slug");
+        "Yuk belanja di *${nameShop ?? 'user'}* Banyak produk baru dan promo lho! Klik disini \n https://store.bisnisomall.com/wpp/dashboard/$slug");
   }
 
   Future refreshData() async {
