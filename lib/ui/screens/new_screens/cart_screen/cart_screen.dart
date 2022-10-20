@@ -169,7 +169,7 @@ class _CartScreenState extends State<CartScreen> {
         if (stateStore[c].item[i].checked) {
           if (totalChecked >= 1) break;
           listCart.add(NewCart(
-              sellerId: stateStore[c].sellerId,
+              supplierId: stateStore[c].supplierId,
               nameSeller: stateStore[c].nameSeller,
               city: _listCart[c].supplier.city,
               product: products));
@@ -357,7 +357,7 @@ class _CartScreenState extends State<CartScreen> {
                                   }
 
                                   debugPrint(
-                                      "seller id ${state.store[c].sellerId} productId $cartId, quantity $quantity");
+                                      "seller id ${state.store[c].supplierId} productId $cartId, quantity $quantity");
                                 }
                                 _updateQuantityCubit.updateQuantity(
                                     cartId: cartId, quantity: quantity);
@@ -462,7 +462,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         .store[c].item[i].qty);
                                                   }
                                                   debugPrint(
-                                                      "seller id ${state.store[c].sellerId} productId $productId, quantity $quantity");
+                                                      "seller id ${state.store[c].supplierId} productId $productId, quantity $quantity");
                                                 }
 
                                                 context

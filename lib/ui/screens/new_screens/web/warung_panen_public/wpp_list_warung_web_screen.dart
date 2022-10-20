@@ -36,8 +36,7 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
   @override
   void initState() {
     _fetchDataResellerShopCubit = FetchDataResellerShopCubit()
-      ..fetchListWarungBySubdistrictId(
-          subdistrictId: widget.subdistrictId, keyword: null);
+      ..fetchListWarungBySubdistrictId(subdistrictId: widget.subdistrictId,keyword: null);
     super.initState();
   }
 
@@ -52,8 +51,7 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
     _debounce = Timer(const Duration(milliseconds: 800), () {
       AppExt.hideKeyboard(context);
       if (keyword.isNotEmpty) {
-        _fetchDataResellerShopCubit.fetchListWarungBySubdistrictId(
-            subdistrictId: widget.subdistrictId, keyword: keyword);
+        _fetchDataResellerShopCubit.fetchListWarungBySubdistrictId(subdistrictId: widget.subdistrictId,keyword: keyword);
       }
     });
   }
@@ -72,13 +70,12 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
               leading: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                    onTap: () => context.beamToNamed('/'),
-                    child: Icon(Icons.arrow_back)),
+                  onTap: () => context.beamToNamed('/'),
+                  child: Icon(Icons.arrow_back)),
               ),
               backgroundColor: Colors.white,
               centerTitle: true,
-              title: Text("Toko Bisnisomall",
-                  style: AppTypo.LatoBold.copyWith(fontSize: 18)),
+              title: Text("Warung Panen",style: AppTypo.LatoBold.copyWith(fontSize: 18)),
               elevation: 2,
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(80),
@@ -89,16 +86,14 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
                       child: Center(
                         child: EditText(
                           controller: _searchController,
-                          hintText: "Cari toko ...",
+                          hintText: "Cari warung ...",
                           inputType: InputType.search,
                           focusNode: _focusNode,
                           onChanged: this._onSearchChanged,
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    )
+                    SizedBox(height: 20,)
                   ],
                 ),
               ),
@@ -119,44 +114,36 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
                                 ? state.listWarung.length > 0
                                     ? ListView.separated(
                                         shrinkWrap: true,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 15, vertical: 18),
-                                        separatorBuilder: (ctx, idx) =>
-                                            SizedBox(
-                                              height: 8,
-                                            ),
+                                        padding: EdgeInsets.symmetric(horizontal: 15,vertical: 18),
+                                        separatorBuilder: (ctx, idx) => SizedBox(height: 8,),
                                         itemCount: state.listWarung.length,
                                         itemBuilder: (context, index) {
-                                          Reseller warung =
-                                              state.listWarung[index];
+                                          Reseller warung = state.listWarung[index];
                                           return MouseRegion(
                                             cursor: SystemMouseCursors.click,
                                             child: GestureDetector(
                                                 onTap: () {
-                                                  _repo.setSlugReseller(
-                                                      slug: warung.slug);
+                                                  _repo.setSlugReseller(slug: warung.slug);
                                                   context.beamToNamed(
-                                                      '/wpp/dashboard/${warung.slug}',
-                                                      data: {
-                                                        'isFromListWarung': true
+                                                      '/wpp/dashboard/${warung.slug}',data: {
+                                                        'isFromListWarung' : true
                                                       });
                                                 },
                                                 child: Container(
                                                   padding: EdgeInsets.all(15),
                                                   child: buildCardItem(warung),
                                                   decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
+                                                    color: Colors.white,
+                                                    borderRadius: BorderRadius.circular(10)
+                                                  ),
                                                 )),
                                           );
                                         })
                                     : Center(
                                         child: EmptyData(
-                                            title: "Toko tidak ditemukan",
+                                            title: "Warung tidak ditemukan",
                                             subtitle:
-                                                "Belum ada toko pada wilayah ini"))
+                                                "Belum ada warung pada wilayah ini"))
                                 : SizedBox())),
           ),
         ),
@@ -164,78 +151,61 @@ class _WppListWarungWebScreenState extends State<WppListWarungWebScreen> {
     );
   }
 
-  Widget buildCardItem(Reseller data) {
-    return Row(
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(data.logo),
-          radius: 30,
-        ),
-        SizedBox(
-          width: 20,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              data.name,
-              style: AppTypo.LatoBold,
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Text(
-              "${data.subdistrict}, ${data.city}",
-              style: AppTypo.body1Lato.copyWith(color: AppColor.grey),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(right: 8),
-                  child: Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.amber, size: 18),
-                      SizedBox(width: 5),
-                      Text(data.rating.toString())
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      left:
-                          BorderSide(width: 1, color: AppColor.silverFlashSale),
-                      right:
-                          BorderSide(width: 1, color: AppColor.silverFlashSale),
+  Widget buildCardItem(Reseller data){
+     return Row(
+        children: [
+          CircleAvatar(backgroundImage: NetworkImage(data.logo),radius: 30,),
+          SizedBox(width: 20,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(data.name,style: AppTypo.LatoBold,),
+              SizedBox(height: 6,),
+              Text("${data.subdistrict}, ${data.city}",style: AppTypo.body1Lato.copyWith(color: AppColor.grey),),
+              SizedBox(height: 6,),
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(right: 8),
+                    child: Row(
+                      children: [
+                        Icon(Icons.star, color: Colors.amber, size: 18),
+                        SizedBox(width: 5),
+                        Text(data.rating.toString())
+                      ],
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.storage, color: AppColor.grey, size: 18),
-                      SizedBox(width: 5),
-                      Text(data.totalProduct.toString())
-                    ],
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    decoration: BoxDecoration(
+                      border: Border(
+            left: BorderSide(width: 1, color:AppColor.silverFlashSale),
+            right: BorderSide(width: 1  , color: AppColor.silverFlashSale),
+          ),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.storage, color: AppColor.grey, size: 18),
+                        SizedBox(width: 5),
+                        Text(data.totalProduct.toString())
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                    children: [
-                      Icon(Icons.group, color: AppColor.grey, size: 18),
-                      SizedBox(width: 5),
-                      Text(data.customer.toString())
-                    ],
-                  ),
-                )
-              ],
-            )
-          ],
-        )
-      ],
-    );
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Row(
+                      children: [
+                        Icon(Icons.group, color: AppColor.grey, size: 18),
+                        SizedBox(width: 5),
+                        Text(data.customer.toString())
+                      ],
+                    ),
+                  )
+                ],
+              )
+            ],
+          )
+        ],
+      );
   }
 }

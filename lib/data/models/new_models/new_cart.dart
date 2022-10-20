@@ -163,14 +163,14 @@ class ProductCart {
 }
 
 class NewCart {
-  final int sellerId;
+  final int supplierId;
   final int resellerId;
   final String nameSeller;
   final String city;
   final List<CartProduct> product;
 
   const NewCart({
-    @required this.sellerId,
+    @required this.supplierId,
     this.resellerId,
     this.nameSeller,
     @required this.city,
@@ -178,7 +178,7 @@ class NewCart {
   });
 
   factory NewCart.fromJson(Map<String, dynamic> json) => NewCart(
-        sellerId: json["sellerId"],
+        supplierId: json["sellerId"],
         resellerId: json["resellerId"],
         nameSeller: json["nameSeller"],
         city: json["city"],
@@ -190,7 +190,7 @@ class NewCart {
 
 
   Map<String, dynamic> toJson() => {
-      'sellerId': sellerId,
+      'sellerId': supplierId,
       'resellerId': resellerId,
       'nameSeller': nameSeller,
       'city': city,
@@ -199,7 +199,7 @@ class NewCart {
 
   @override
   String toString() {
-    return 'NewCart{sellerId: $sellerId, resellerId: $resellerId, nameSeller: $nameSeller, product: $product}';
+    return 'NewCart{sellerId: $supplierId, resellerId: $resellerId, nameSeller: $nameSeller, product: $product}';
   }
 }
 

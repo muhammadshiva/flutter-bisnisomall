@@ -536,18 +536,30 @@ class OrderMenungguPembayaranData {
 
 class OrderDetailResponse {
   OrderDetailResponse({
-    @required this.data,
-    @required this.message,
+   this.data,
+   this.dataNoAuth,
+   this.message,
   });
 
   final OrderDetailResponseData data;
+  final WppOrderDetailResponseData dataNoAuth;
   final String message;
 
-  factory OrderDetailResponse.fromJson(Map<String, dynamic> json) =>
+  factory OrderDetailResponse.fromJson(Map<String, dynamic> json,bool isWpp) =>
+      isWpp ?
+        OrderDetailResponse(
+        data: null,
+        dataNoAuth: json["data"] != null
+            ?  WppOrderDetailResponseData.fromJson(json["data"])
+            : null,
+        message: json["message"]
+        )
+      :
       OrderDetailResponse(
         data: json["data"] != null
-            ? OrderDetailResponseData.fromJson(json["data"])
+            ?  OrderDetailResponseData.fromJson(json["data"])
             : null,
+        dataNoAuth: null,
         message: json["message"],
       );
 }
@@ -557,6 +569,7 @@ class OrderDetailResponseData {
     @required this.id,
     @required this.status,
     @required this.recipientName,
+    @required this.recipientAddress,
     @required this.sellerName,
     @required this.transactionCode,
     @required this.orderDate,
@@ -570,7 +583,6 @@ class OrderDetailResponseData {
     @required this.courier,
     @required this.note,
     @required this.airwayBill,
-    @required this.recipientAddress,
     @required this.hubAddress,
     @required this.createdAt,
   });
@@ -578,6 +590,7 @@ class OrderDetailResponseData {
   final int id;
   final String status;
   final String recipientName;
+  final String recipientAddress;
   final String orderDate;
   final String sellerName;
   final String deliveryDate;
@@ -591,7 +604,6 @@ class OrderDetailResponseData {
   final String courier;
   final String note;
   final String airwayBill;
-  final String recipientAddress;
   final String hubAddress;
   final DateTime createdAt;
 
@@ -600,6 +612,7 @@ class OrderDetailResponseData {
         id: json["id"],
         status: json["status"],
         recipientName: json["recipient_name"],
+        recipientAddress: json["recipient_address"],
         sellerName: json["seller_name"],
         transactionCode: json["transaction_code"],
         orderDate: json["order_date"],
@@ -614,16 +627,152 @@ class OrderDetailResponseData {
         courier: json["courier"],
         note: json["note"],
         airwayBill: json["airway_bill"],
-        recipientAddress: json["recipient_address"],
         hubAddress: json["hub_address"],
         createdAt: DateTime.parse(json["created_at"]),
       );
+}
+
+class WppOrderDetailResponseData {
+  WppOrderDetailResponseData({
+    @required this.id,
+    @required this.recipientName,
+    @required this.transactionCode,
+    @required this.orderDate,
+    @required this.paymentMethod,
+    @required this.totalItem,
+    @required this.subtotal,
+    @required this.shippingCost,
+    @required this.total,
+    @required this.recipientAddress,
+    @required this.orders,
+    @required this.accountName,
+    @required this.accountNumber,
+  });
+
+  final int id; 
+  final String recipientName; 
+  final String orderDate; 
+  final String transactionCode; 
+  final String paymentMethod; 
+  final int totalItem;  
+  final String subtotal;  
+  final String shippingCost;  
+  final String total; 
+  final String recipientAddress;
+  final List<WppSubOrderDetail> orders;
+  final String accountName;
+  final String accountNumber;
+
+  factory WppOrderDetailResponseData.fromJson(Map<String, dynamic> json) =>
+      WppOrderDetailResponseData(
+        id: json["id"],
+        recipientName: json["recipient_name"],
+        transactionCode: json["transaction_code"],
+        orderDate: json["order_date"],
+        paymentMethod: json["payment_method"],
+        totalItem: json["total_item"] ?? 0,
+        subtotal: json["subtotal"],
+        shippingCost: json["shipping_cost"],
+        total: json["total"],
+        recipientAddress: json["recipient_address"],
+        accountName: json["account_name"],
+        accountNumber: json["account_number"],
+        orders:
+        json["orders"].length != 0 ?
+        List<WppSubOrderDetail>.from(
+            json["orders"].map((x) => WppSubOrderDetail.fromJson(x))) : [],
+      );
+
+   Map<String, dynamic> toJson() => {
+        "id": id,
+        "recipient_name": recipientName,
+        "transaction_code": transactionCode,
+        "order_date": orderDate,
+        "payment_method": paymentMethod,
+        "total_item": totalItem,
+        "subtotal": subtotal,
+        "shipping_cost": shippingCost,
+        "total": total,
+        "recipient_address": recipientAddress,
+        "orders": orders,
+      };
+}
+
+class WppSubOrderDetail {
+  WppSubOrderDetail({
+    @required this.id,
+    @required this.status,
+    @required this.sellerName,
+    @required this.sellerAddress,
+    @required this.orderDate,
+    @required this.deliveryDate,
+    @required this.products,
+    @required this.courier,
+    @required this.note,
+    @required this.airwayBill,
+    @required this.hubAddress,
+    @required this.subtotal,
+    @required this.shippingCost,
+    @required this.total,
+  });
+
+  final int id;
+  final String status;
+  final String orderDate;
+  final String sellerName;
+  final String sellerAddress;
+  final String deliveryDate;
+  final List<ProductOrder> products;
+  final String courier;
+  final String note;
+  final String airwayBill;
+  final String hubAddress;
+  final String subtotal;  
+  final String shippingCost;  
+  final String total;
+
+  factory WppSubOrderDetail.fromJson(Map<String, dynamic> json) =>
+      WppSubOrderDetail(
+        id: json["id"],
+        status: json["status"],
+        sellerName: json["seller_name"],
+        sellerAddress: json["seller_address"],
+        orderDate: json["order_date"],
+        deliveryDate: json["delivery_date"],
+        products: List<ProductOrder>.from(
+            json["products"].map((x) => ProductOrder.fromJson(x))),
+        courier: json["courier"],
+        note: json["note"],
+        airwayBill: json["airway_bill"],
+        hubAddress: json["hub_address"],
+        subtotal: json["subtotal"],
+        shippingCost: json["shipping_cost"],
+        total: json["total"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "status": status,
+        "seller_name": sellerName,
+        "seller_address": sellerAddress,
+        "order_date": orderDate,
+        "delivery_date": deliveryDate,
+        "products": products,
+        "courier": courier,
+        "note": note,
+        "airway_bill": airwayBill,
+        "hub_address": hubAddress,
+        "subtotal": subtotal,
+        "shipping_cost": shippingCost,
+        "total": total,
+      };
 }
 
 class ProductOrder {
   ProductOrder({
     @required this.id,
     @required this.name,
+    @required this.variantName,
     @required this.cover,
     @required this.price,
     @required this.quantity,
@@ -635,6 +784,7 @@ class ProductOrder {
 
   final int id;
   final String name;
+  final String variantName;
   final String cover;
   final String price;
   final int quantity;
@@ -646,6 +796,7 @@ class ProductOrder {
   factory ProductOrder.fromJson(Map<String, dynamic> json) => ProductOrder(
         id: json["id"],
         name: json["name"],
+        variantName: json["variant_name"],
         cover: json["cover"],
         price: json["price"],
         quantity: json["quantity"],
@@ -654,6 +805,20 @@ class ProductOrder {
         total: json["total"],
         isVariant: json["is_variant"],
       );
+  
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "variant_name":variantName,
+        "cover": cover,
+        "price": price,
+        "quantity": quantity,
+        "weight": weight,
+        "subtotal": subtotal,
+        "total": total,
+        "is_variant": isVariant,      
+  };
+
 }
 
 //*****TRANSAKSI DETAIL SUPPLIER*****//

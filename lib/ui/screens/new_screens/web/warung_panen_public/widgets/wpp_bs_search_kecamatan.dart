@@ -188,7 +188,7 @@ class _WppBsSearchKecamatanItemState extends State<WppBsSearchKecamatanItem> {
                         );
                       }
                       if (state is KecamatanSearchFailure) {
-                        return Text("Failure");
+                        return Text("Kecamatan tidak tersedia");
                       }
                       if (state is KecamatanSearchSuccess) {
                         final items = state.result;

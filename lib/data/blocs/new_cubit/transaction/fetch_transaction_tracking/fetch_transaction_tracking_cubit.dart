@@ -26,4 +26,19 @@ class FetchTransactionTrackingCubit extends Cubit<FetchTransactionTrackingState>
     }
   }
 
+  Future<void> getTrackingOrderNoAuth({@required int orderId}) async {
+    emit(FetchTransactionTrackingLoading());
+    try {
+      final response =
+      await _repo.fetchTrackingOrderNoAuth(orderId: orderId);
+      emit(FetchTransactionTrackingSuccess(response.data));
+    } catch (error) {
+      if (error is NetworkException) {
+        emit(FetchTransactionTrackingFailure.network(error.toString()));
+        return;
+      }
+      emit(FetchTransactionTrackingFailure.general(error.toString()));
+    }
+  }
+
 }

@@ -20,8 +20,6 @@ import 'package:marketplace/utils/images.dart' as AppImg;
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 import 'package:open_file/open_file.dart';
 import 'package:path/path.dart' as p;
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -54,7 +52,6 @@ class _WppInvoicePaymentWebScreenState
 
   String get invoiceNumber => widget.order.payment.transactionCode ?? "-";
 
-  final pdf = pw.Document();
   var anchor;
 
   final RecipentRepository recipentRepo = RecipentRepository();
@@ -62,19 +59,6 @@ class _WppInvoicePaymentWebScreenState
   var isPublicResellerShop = false;
 
   FetchSelectedRecipentCubit _fetchSelectedRecipentCubit;
-
-  createPDF() async {
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) => pw.Column(
-          children: [
-            pw.Text('Hello World', style: pw.TextStyle(fontSize: 40)),
-          ],
-        ),
-      ),
-    );
-    // savePDF();
-  }
 
   @override
   void initState() {
@@ -189,27 +173,7 @@ class _WppInvoicePaymentWebScreenState
       );
   }
 
-  void _printScreen() {
-    Printing.layoutPdf(onLayout: (PdfPageFormat format) async {
-      final doc = pw.Document();
 
-      final image = await WidgetWraper.fromKey(
-        key: _printKey,
-      );
-
-      doc.addPage(pw.Page(
-          pageFormat: format,
-          build: (pw.Context context) {
-            return pw.Center(
-              child: pw.Expanded(
-                child: pw.Image(image),
-              ),
-            );
-          }));
-
-      return doc.save();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -217,18 +181,18 @@ class _WppInvoicePaymentWebScreenState
       backgroundColor: AppColor.navScaffoldBg,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Invoice Reseller', style: AppTypo.subtitle2),
+        title: Text('Invoice Warung Panen', style: AppTypo.subtitle2),
         centerTitle: true,
         backgroundColor: Colors.white,
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black),
-        actions: [
-          IconButton(
-            icon: Icon(EvaIcons.download),
-            tooltip: 'Download',
-            onPressed: _printScreen,
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(EvaIcons.download),
+        //     tooltip: 'Download',
+        //     onPressed: _printScreen,
+        //   ),
+        // ],
       ),
       body: SizedBox.expand(
         child: InteractiveViewer(

@@ -98,7 +98,7 @@ class OrderRepository {
     debugPrint("COK 1");
     for (int i = 0; i < carts.length; i++) {
         cartsTemp.add(CartTempAddOrderNoAuth(
-          supplierId: carts[i].resellerId, 
+          supplierId: carts[i].supplierId, 
           ongkir: ongkirs[i].ongkir, 
           shippingCode: shppingCodes[i].shippingCode, 
           note: notes[i].note, 
@@ -261,6 +261,17 @@ class OrderRepository {
     }
 
   }
+
+  Future<TrackingOrderResponse> fetchTrackingOrderNoAuth(
+      {@required int orderId}) async {
+    final token = await _authenticationRepository.getToken();
+    final response = await _provider.get("/order/noauth/logs/$orderId", headers: {
+      HttpHeaders.authorizationHeader: 'Bearer $token',
+      HttpHeaders.contentTypeHeader: 'application/json',
+      'ADS-Key': _adsKey
+    });
+    return TrackingOrderResponse.fromJson(response);
+  } 
 
   //======================================================================
   //======================================================================

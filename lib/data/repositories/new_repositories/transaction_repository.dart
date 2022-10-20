@@ -98,8 +98,19 @@ class TransactionRepository {
       HttpHeaders.contentTypeHeader: 'application/json',
        'ADS-Key':_adsKey
     });
-    return OrderDetailResponse.fromJson(response);
+    return OrderDetailResponse.fromJson(response,false);
   }
+
+  Future<OrderDetailResponse> fetchOrderDetailNoAuth(
+      {@required int paymentId}) async {
+    final response = await _provider
+        .get("/order/noauth/detail/$paymentId", headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+       'ADS-Key':_adsKey
+    });
+    return OrderDetailResponse.fromJson(response,true);
+  }
+
 
   Future<OrderDetailSupplierResponse> fetchProductSupplierDetail(
       {@required int orderId}) async {

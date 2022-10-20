@@ -89,7 +89,7 @@ void main() async {
   AppType appType;
 
   // await DotEnv.load(fileName: "lib/env/.env");
-  appName = "PanenPanen.id";
+  appName = "Bisnisomall";
   appType = AppType.panenpanen;
 
   Widget configuredApp = AAppConfig(

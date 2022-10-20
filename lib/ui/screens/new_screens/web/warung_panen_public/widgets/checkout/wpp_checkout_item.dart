@@ -208,7 +208,7 @@ class _WppCheckoutItemState extends State<WppCheckoutItem> {
                 height: 25,
               ),
               WppCheckoutCourierItem(
-                supplierId: item.sellerId,
+                supplierId: item.supplierId,
                 cart: widget.cart,
                 enableCourier: widget.enableCourier,
                 // productId: cartProduct.id,

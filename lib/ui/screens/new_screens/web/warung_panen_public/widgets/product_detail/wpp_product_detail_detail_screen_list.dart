@@ -61,28 +61,17 @@ class _WppProductDetailDetailScreenListState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16),
+            padding: const EdgeInsets.only(top: 10, left: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.product.name,
-                      style: AppTypo.subtitle1
-                          .copyWith(fontWeight: FontWeight.w600),
-                    ),
-                    widget.product.productVariant.length > 0
-                        ? Text(
-                      " ${_productVariant.variantName}",
-                      style: AppTypo.subtitle1
-                          .copyWith(fontWeight: FontWeight.w600),
-                    )
-                        : SizedBox(),
-                  ],
+                Text(
+                  "${widget.product.name} ${widget.product.productVariant.length > 0 ? _productVariant.variantName : ""}",
+                  // widget.product.name,
+                  style:
+                      AppTypo.subtitle1.copyWith(fontWeight: FontWeight.w600),
                 ),
-
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -133,68 +122,68 @@ class _WppProductDetailDetailScreenListState
                   ],
                 ),
                 widget.product.productVariant.length > 0 &&
-                    _productVariant.variantDisc != 0
+                        _productVariant.variantDisc != 0
                     ? Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2),
-                        color: AppColor.red.withOpacity(0.25),
-                      ),
-                      child: Text(
-                        "${_productVariant.variantDisc ?? 0}%",
-                        style: AppTypo.overline.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AppColor.red),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Expanded(
-                      child: Text(
-                          "Rp ${AppExt.toRupiah(_productVariant.variantSellPrice ?? 0)}",
-                          maxLines: kIsWeb ? null : 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppTypo.captionAccent.copyWith(
-                              decoration: TextDecoration.lineThrough)),
-                    ),
-                  ],
-                )
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 4, vertical: 2),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2),
+                              color: AppColor.red.withOpacity(0.25),
+                            ),
+                            child: Text(
+                              "${_productVariant.variantDisc ?? 0}%",
+                              style: AppTypo.overline.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.red),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 3,
+                          ),
+                          Expanded(
+                            child: Text(
+                                "Rp ${AppExt.toRupiah(_productVariant.variantSellPrice ?? 0)}",
+                                maxLines: kIsWeb ? null : 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTypo.captionAccent.copyWith(
+                                    decoration: TextDecoration.lineThrough)),
+                          ),
+                        ],
+                      )
                     : widget.product.disc != 0
-                    ? Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2),
-                        color: AppColor.red.withOpacity(0.25),
-                      ),
-                      child: Text(
-                        "${widget.product.disc ?? 0}%",
-                        style: AppTypo.overline.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AppColor.red),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Expanded(
-                      child: Text(
-                          "Rp ${AppExt.toRupiah(widget.product.sellingPrice ?? 0)}",
-                          maxLines: kIsWeb ? null : 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppTypo.captionAccent.copyWith(
-                              decoration:
-                              TextDecoration.lineThrough)),
-                    ),
-                  ],
-                )
-                    : SizedBox(),
+                        ? Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 4, vertical: 2),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2),
+                                  color: AppColor.red.withOpacity(0.25),
+                                ),
+                                child: Text(
+                                  "${widget.product.disc ?? 0}%",
+                                  style: AppTypo.overline.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColor.red),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 3,
+                              ),
+                              Expanded(
+                                child: Text(
+                                    "Rp ${AppExt.toRupiah(widget.product.sellingPrice ?? 0)}",
+                                    maxLines: kIsWeb ? null : 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: AppTypo.captionAccent.copyWith(
+                                        decoration:
+                                            TextDecoration.lineThrough)),
+                              ),
+                            ],
+                          )
+                        : SizedBox(),
                 SizedBox(
                   height: 8,
                 ),
@@ -211,7 +200,7 @@ class _WppProductDetailDetailScreenListState
                     Text(
                       "4.9",
                       style:
-                      AppTypo.caption.copyWith(fontWeight: FontWeight.w600),
+                          AppTypo.caption.copyWith(fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
                       width: 8,
@@ -254,77 +243,82 @@ class _WppProductDetailDetailScreenListState
           ),
           widget.product.productVariant.length > 0
               ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Divider(
-                thickness: 7,
-                color: Color(0xFFEBECED),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 10),
-                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Pilih Varian : ",
-                      style: AppTypo.subtitle1
-                          .copyWith(fontWeight: FontWeight.w700),
+                    Divider(
+                      thickness: 7,
+                      color: Color(0xFFEBECED),
                     ),
-                    SizedBox(
-                      height: 8,
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Pilih Varian : ",
+                            style: AppTypo.subtitle1
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Wrap(
+                            direction: Axis.horizontal,
+                            runSpacing: 10,
+                            alignment: WrapAlignment.start,
+                            children: [
+                              for (var i = 0;
+                                  i < widget.product.productVariant.length;
+                                  i++)
+                                VariantRoundedContainer(
+                                  title: widget
+                                      .product.productVariant[i].variantName,
+                                  isSelected: variantSelectedId ==
+                                      widget.product.productVariant[i].id,
+                                  onTap: () {
+                                    setState(() {
+                                      variantSelectedId =
+                                          widget.product.productVariant[i].id;
+                                      _productVariant =
+                                          widget.product.productVariant[i];
+                                    });
+                                    widget.onVariantSelected(_productVariant);
+                                  },
+                                )
+                            ],
+                          ),
+                          // GridView.builder(
+                          //     shrinkWrap: true,
+                          //     physics: NeverScrollableScrollPhysics(),
+                          //     gridDelegate:
+                          //     const SliverGridDelegateWithMaxCrossAxisExtent(
+                          //         maxCrossAxisExtent: 100,
+                          //         childAspectRatio: 2.5,
+                          //         crossAxisSpacing: 10,
+                          //         mainAxisSpacing: 10),
+                          //     itemCount: widget.product.productVariant.length,
+                          //     itemBuilder: (context, index) {
+                          //       ProductVariant productVariant =
+                          //       widget.product.productVariant[index];
+                          //       return VariantRoundedContainer(
+                          //         title: productVariant.variantName,
+                          //         isSelected:
+                          //         variantSelectedId == productVariant.id,
+                          //         onTap: () {
+                          //           setState(() {
+                          //             variantSelectedId = productVariant.id;
+                          //             _productVariant = productVariant;
+                          //           });
+                          //           widget.onVariantSelected(_productVariant);
+                          //         },
+                          //       );
+                          //     }),
+                        ],
+                      ),
                     ),
-                    Wrap(
-                      direction: Axis.horizontal,
-      runSpacing: 10,
-      alignment: WrapAlignment.start,
-                      children: [
-                        for (var i = 0; i < widget.product.productVariant.length; i++) 
-                        VariantRoundedContainer(
-                            title: widget.product.productVariant[i].variantName,
-                            isSelected:
-                            variantSelectedId == widget.product.productVariant[i].id,
-                            onTap: () {
-                              setState(() {
-                                variantSelectedId = widget.product.productVariant[i].id;
-                                _productVariant = widget.product.productVariant[i];
-                              });
-                              widget.onVariantSelected(_productVariant);
-                            },
-                          )
-                      ],
-                    ),
-                    // GridView.builder(
-                    //     shrinkWrap: true,
-                    //     physics: NeverScrollableScrollPhysics(),
-                    //     gridDelegate:
-                    //     const SliverGridDelegateWithMaxCrossAxisExtent(
-                    //         maxCrossAxisExtent: 100,
-                    //         childAspectRatio: 2.5,
-                    //         crossAxisSpacing: 10,
-                    //         mainAxisSpacing: 10),
-                    //     itemCount: widget.product.productVariant.length,
-                    //     itemBuilder: (context, index) {
-                    //       ProductVariant productVariant =
-                    //       widget.product.productVariant[index];
-                    //       return VariantRoundedContainer(
-                    //         title: productVariant.variantName,
-                    //         isSelected:
-                    //         variantSelectedId == productVariant.id,
-                    //         onTap: () {
-                    //           setState(() {
-                    //             variantSelectedId = productVariant.id;
-                    //             _productVariant = productVariant;
-                    //           });
-                    //           widget.onVariantSelected(_productVariant);
-                    //         },
-                    //       );
-                    //     }),
                   ],
-                ),
-              ),
-            ],
-          )
+                )
               : SizedBox(),
           Divider(
             thickness: 7,
@@ -404,9 +398,9 @@ class _WppProductDetailDetailScreenListState
                             .getSelectedRecipentNoAuth()['province'],
                         name: recipentRepo.getSelectedRecipentNoAuth()['name'],
                         address:
-                        recipentRepo.getSelectedRecipentNoAuth()['address'],
+                            recipentRepo.getSelectedRecipentNoAuth()['address'],
                         phone:
-                        recipentRepo.getSelectedRecipentNoAuth()['phone'],
+                            recipentRepo.getSelectedRecipentNoAuth()['phone'],
                       );
                       context.beamToNamed(
                           '/wpp/dashboard/${widget.product.reseller.slug}',
@@ -437,7 +431,7 @@ class _WppProductDetailDetailScreenListState
                 Text(
                   "Informasi Produk",
                   style:
-                  AppTypo.subtitle1.copyWith(fontWeight: FontWeight.w700),
+                      AppTypo.subtitle1.copyWith(fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
                   height: 8,
@@ -453,7 +447,7 @@ class _WppProductDetailDetailScreenListState
                   "${widget.product.categoryName}",
                   AppTypo.caption.copyWith(
                       color: AppColor.primary, fontWeight: FontWeight.w600),
-                      () {},
+                  () {},
                 ),
                 Text(
                   "Deskripsi",
