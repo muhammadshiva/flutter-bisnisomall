@@ -336,13 +336,16 @@ class _JoinUserAddProductScreenState extends State<JoinUserAddProductScreen> {
                                   SizedBox(
                                     height: 8,
                                   ),
-                                  AddSubkategoriProduct(
-                                    name: product.subCategoryName,
-                                    categories: state.subcategories,
-                                    checkSubCategory: (value) {
-                                      _subCategoryController..text = value;
-                                    },
-                                  ),
+                                  state.subcategories.isEmpty
+                                      ? Text('Wajib diisi')
+                                      : AddSubkategoriProduct(
+                                          name: product.subCategoryName,
+                                          categories: state.subcategories,
+                                          checkSubCategory: (value) {
+                                            _subCategoryController
+                                              ..text = value;
+                                          },
+                                        ),
                                 ],
                               );
                             },

@@ -126,7 +126,7 @@ class WppProductDetailAppbar extends StatelessWidget {
                       if (kIsWeb) {
                         _handleCopy(
                             context,
-                            "https://reseller.apmikimmdo.com/wpp/productdetail/${product.reseller.slug}/${product.slug}/${product.id}",
+                            "https://store.bisnisomall.com/wpp/productdetail/${product.reseller.slug}/${product.slug}/${product.id}",
                             "Link produk tersalin");
                       } else {
                         context.read<BagikanProdukCubit>().reset();
