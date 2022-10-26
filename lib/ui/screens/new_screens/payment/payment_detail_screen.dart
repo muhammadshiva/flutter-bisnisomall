@@ -12,7 +12,8 @@ import 'package:marketplace/data/blocs/new_cubit/order/change_payment_method/cha
 import 'package:marketplace/data/blocs/new_cubit/order/fetch_payment_method/fetch_payment_method_cubit.dart';
 import 'package:marketplace/data/blocs/user_data/user_data_cubit.dart';
 import 'package:marketplace/data/models/models.dart';
-import 'package:marketplace/ui/screens/new_screens/invoice/invoice_payment_screen.dart';
+import 'package:marketplace/ui/screens/new_screens/invoice/new_invoice/invoice_payment_screen.dart';
+// import 'package:marketplace/ui/screens/new_screens/invoice/invoice_payment_screen.dart';
 import 'package:marketplace/ui/widgets/a_app_config.dart';
 import 'package:marketplace/ui/widgets/widgets.dart';
 import 'package:marketplace/utils/typography.dart' as AppTypo;
@@ -718,8 +719,10 @@ class _PaymentDetailScreenState extends State<PaymentDetailScreen> {
                                                     AppExt.pushScreen(
                                                         context,
                                                         InvoicePaymentScreen(
-                                                          checkout: checkout,
-                                                          order: order,
+                                                          paymentId: widget
+                                                              .orderData
+                                                              .payment
+                                                              .id,
                                                         ));
                                                     // debugPrint(order.payment.);
                                                     // debugPrint(checkout.);
@@ -850,8 +853,8 @@ class _PaymentDetailScreenState extends State<PaymentDetailScreen> {
                                                 AppExt.pushScreen(
                                                     context,
                                                     InvoicePaymentScreen(
-                                                      checkout: checkout,
-                                                      order: order,
+                                                      paymentId: widget
+                                                          .orderData.payment.id,
                                                       isFullWallet: true,
                                                     ));
                                                 // debugPrint(order.payment.);
