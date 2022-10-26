@@ -185,7 +185,7 @@ class _CheckoutItemState extends State<CheckoutItem> {
                 height: 25,
               ),
               CheckoutCourierItem(
-                supplierId: item.sellerId,
+                supplierId: item.supplierId,
                 cart: widget.cart,
                 enableCourier: widget.enableCourier,
                 onChoose: (
