@@ -67,13 +67,12 @@ class CartResponseElement {
 }
 
 class ProductsCart {
-  ProductsCart({
-    @required this.id,
-    @required this.quantity,
-    @required this.productId,
-    @required this.product,
-    this.variantSelected
-  });
+  ProductsCart(
+      {@required this.id,
+      @required this.quantity,
+      @required this.productId,
+      @required this.product,
+      this.variantSelected});
 
   final int id;
   final int quantity;
@@ -82,12 +81,13 @@ class ProductsCart {
   final ProductVariant variantSelected;
 
   factory ProductsCart.fromJson(Map<String, dynamic> json) => ProductsCart(
-        id: json["id"],
-        quantity: json["quantity"],
-        productId: json["product_id"],
-        product: Products.fromJson(json["product"]),
-        variantSelected: json["variantSelected"] != null ?  ProductVariant.fromJson(json["variantSelected"]) : null
-      );
+      id: json["id"],
+      quantity: json["quantity"],
+      productId: json["product_id"],
+      product: Products.fromJson(json["product"]),
+      variantSelected: json["variantSelected"] != null
+          ? ProductVariant.fromJson(json["variantSelected"])
+          : null);
 
   @override
   String toString() {
@@ -163,14 +163,14 @@ class ProductCart {
 }
 
 class NewCart {
-  final int sellerId;
+  final int supplierId;
   final int resellerId;
   final String nameSeller;
   final String city;
   final List<CartProduct> product;
 
   const NewCart({
-    @required this.sellerId,
+    @required this.supplierId,
     this.resellerId,
     this.nameSeller,
     @required this.city,
@@ -178,7 +178,7 @@ class NewCart {
   });
 
   factory NewCart.fromJson(Map<String, dynamic> json) => NewCart(
-        sellerId: json["sellerId"],
+        supplierId: json["sellerId"],
         resellerId: json["resellerId"],
         nameSeller: json["nameSeller"],
         city: json["city"],
@@ -188,18 +188,17 @@ class NewCart {
                 json["product"].map((x) => CartProduct.fromJson(x))),
       );
 
-
   Map<String, dynamic> toJson() => {
-      'sellerId': sellerId,
-      'resellerId': resellerId,
-      'nameSeller': nameSeller,
-      'city': city,
-      'product': product
-  };
+        'sellerId': supplierId,
+        'resellerId': resellerId,
+        'nameSeller': nameSeller,
+        'city': city,
+        'product': product
+      };
 
   @override
   String toString() {
-    return 'NewCart{sellerId: $sellerId, resellerId: $resellerId, nameSeller: $nameSeller, product: $product}';
+    return 'NewCart{sellerId: $supplierId, resellerId: $resellerId, nameSeller: $nameSeller, product: $product}';
   }
 }
 
