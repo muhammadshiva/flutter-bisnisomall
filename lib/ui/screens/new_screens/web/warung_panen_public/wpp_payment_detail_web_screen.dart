@@ -70,7 +70,6 @@ class _WppPaymentDetailWebScreenState extends State<WppPaymentDetailWebScreen> {
         );
         context.beamToNamed('/wpp/dashboard/${_repo.getSlugReseller()}');
       });
-     
     }
     super.initState();
   }
@@ -504,7 +503,7 @@ class _WppPaymentDetailWebScreenState extends State<WppPaymentDetailWebScreen> {
                                 onPressed: () {
                                   WppInvoice wppInvoice = WppInvoice(
                                       order: widget.orderData,
-                                      checkout: widget.checkoutTempWeb);
+                                      noAuthCheckout: widget.checkoutTempWeb);
                                   context.beamToNamed(
                                       '/wpp/invoice?dt=${AppExt.encryptMyData(jsonEncode(wppInvoice))}');
                                 },
