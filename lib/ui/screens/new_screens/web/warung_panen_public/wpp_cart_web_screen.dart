@@ -86,15 +86,15 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
     context.read<FetchCartCubit>().reset();
 
     _recipentRepo.setRecipentUserNoAuthDetailProduct(
-        subdistrictId:
-            _recipentRepo.getSelectedRecipentNoAuth()['subdistrict_id'],
-        subdistrict: _recipentRepo.getSelectedRecipentNoAuth()['subdistrict'],
-        city: _recipentRepo.getSelectedRecipentNoAuth()['city'],
-        province: _recipentRepo.getSelectedRecipentNoAuth()['province'],
-        name: _recipentRepo.getSelectedRecipentNoAuth()['name'],
-        address: _recipentRepo.getSelectedRecipentNoAuth()['address'],
-        phone: _recipentRepo.getSelectedRecipentNoAuth()['phone'],
-      );
+      subdistrictId:
+          _recipentRepo.getSelectedRecipentNoAuth()['subdistrict_id'],
+      subdistrict: _recipentRepo.getSelectedRecipentNoAuth()['subdistrict'],
+      city: _recipentRepo.getSelectedRecipentNoAuth()['city'],
+      province: _recipentRepo.getSelectedRecipentNoAuth()['province'],
+      name: _recipentRepo.getSelectedRecipentNoAuth()['name'],
+      address: _recipentRepo.getSelectedRecipentNoAuth()['address'],
+      phone: _recipentRepo.getSelectedRecipentNoAuth()['phone'],
+    );
 
     _loadCart();
   }
@@ -105,13 +105,13 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
   void didChangeDependencies() {
     final offlineCart = BlocProvider.of<AddToCartOfflineCubit>(context).state;
     context
-            .read<FetchCartCubit>()
-            .fetchCartOffline(List<CartResponseElement>.from(offlineCart.cart));
-        // _fetchCartCubit.fetchCartOffline(List<CartResponseElement>.from(offlineCart.cart));
-        _incDecCartCubit.initialization(offlineCart.cart,false);
-        setState(() {
-          _listCart = offlineCart.cart;
-        });
+        .read<FetchCartCubit>()
+        .fetchCartOffline(List<CartResponseElement>.from(offlineCart.cart));
+    // _fetchCartCubit.fetchCartOffline(List<CartResponseElement>.from(offlineCart.cart));
+    _incDecCartCubit.initialization(offlineCart.cart, false);
+    setState(() {
+      _listCart = offlineCart.cart;
+    });
   }
 
   @override
@@ -133,19 +133,16 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
     List<NewCart> listCart = [];
     for (var c = 0; c < stateStore.length; c++) {
       List<CartProduct> products = [];
-      for (var i = 0;
-      i < stateStore[c].item.length;
-      i++) {
+      for (var i = 0; i < stateStore[c].item.length; i++) {
         if (stateStore[c].item[i].checked) {
-          var newProduct = _listCart[c]
-              .products
-              .firstWhere((element) =>
-          // element.productId ==
-          //     stateStore[c]
-          //         .item[i]
-          //         .productId &&
-              element.id ==
-                  stateStore[c].item[i].cartId,orElse: () => null);
+          var newProduct = _listCart[c].products.firstWhere(
+              (element) =>
+                  // element.productId ==
+                  //     stateStore[c]
+                  //         .item[i]
+                  //         .productId &&
+                  element.id == stateStore[c].item[i].cartId,
+              orElse: () => null);
           var newCart = CartProduct(
             cartId: newProduct.id,
             id: newProduct.productId,
@@ -155,12 +152,12 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
             variantSelected: newProduct.variantSelected != null
                 ? newProduct.variantSelected
                 : null,
-            enduserPrice:
-            newProduct.product.disc > 0 ?
-            newProduct.product.discPrice : newProduct.product.sellingPrice,
-            initialPrice:
-             newProduct.product.disc > 0 ?
-            newProduct.product.discPrice : newProduct.product.sellingPrice,
+            enduserPrice: newProduct.product.disc > 0
+                ? newProduct.product.discPrice
+                : newProduct.product.sellingPrice,
+            initialPrice: newProduct.product.disc > 0
+                ? newProduct.product.discPrice
+                : newProduct.product.sellingPrice,
             productPhoto: newProduct.product.productPhoto[0].image,
             quantity: stateStore[c].item[i].qty,
             weight: newProduct.product.weight,
@@ -171,15 +168,12 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
         }
       }
       var totalChecked = 0;
-      for (var i = 0;
-      i < stateStore[c].item.length;
-      i++) {
-        if (!stateStore[c].item[i].checked)
-          continue;
+      for (var i = 0; i < stateStore[c].item.length; i++) {
+        if (!stateStore[c].item[i].checked) continue;
         if (stateStore[c].item[i].checked) {
           if (totalChecked >= 1) break;
           listCart.add(NewCart(
-              sellerId: stateStore[c].sellerId,
+              supplierId: stateStore[c].sellerId,
               resellerId: stateStore[c].resellerId,
               nameSeller: stateStore[c].nameSeller,
               city: _listCart[c].reseller.city,
@@ -190,9 +184,8 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
     }
 
     debugPrint("listCart ${listCart}");
-     context.beamToNamed(
-      '/wpp/customeraddress/?dt=${AppExt.encryptMyData(jsonEncode(listCart))}'
-      );
+    context.beamToNamed(
+        '/wpp/customeraddress/?dt=${AppExt.encryptMyData(jsonEncode(listCart))}');
   }
 
   @override
@@ -256,7 +249,8 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                             debugPrint("my fetch cart state $state");
                             if (state is FetchCartSuccess) {
                               debugPrint("TEST 1");
-                              debugPrint("fetch cart state success ${state.cart}");
+                              debugPrint(
+                                  "fetch cart state success ${state.cart}");
                               // _incDecCartCubit.initialization(state.cart);
                               setState(() {
                                 _listCart = state.cart;
@@ -271,12 +265,16 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                         BlocListener<FetchRecipentCubit, FetchRecipentState>(
                           bloc: _fetchRecipentCubit,
                           listener: (context, state) {
-                            if (state is FetchRecipentSuccess){
+                            if (state is FetchRecipentSuccess) {
                               debugPrint("myrecipient ${state.recipent}");
-                              final recipient = state.recipent.singleWhere((element) => element.isMainAddress == 1, orElse: () => null);
-                              if (recipient != null){
+                              final recipient = state.recipent.singleWhere(
+                                  (element) => element.isMainAddress == 1,
+                                  orElse: () => null);
+                              if (recipient != null) {
                                 final cityId = recipient.cityId;
-                                context.read<FetchCartCubit>().fetchCartWithCityId(cityId: cityId);
+                                context
+                                    .read<FetchCartCubit>()
+                                    .fetchCartWithCityId(cityId: cityId);
                               } else {
                                 context.read<FetchCartCubit>().load();
                               }
@@ -318,8 +316,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                           bloc: _cartStockValidationCubit,
                           listener: (context, state) async {
                             if (state is CartStockValidationSuccess) {
-
-                               _passingDataCartToCheckout();
+                              _passingDataCartToCheckout();
                               return;
                             }
                             if (state is CartStockValidationFailure) {
@@ -350,8 +347,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                           },
                         ),
                       ],
-                      child:
-                       BlocBuilder<FetchCartCubit, FetchCartState>(
+                      child: BlocBuilder<FetchCartCubit, FetchCartState>(
                         builder: (context, state) {
                           if (state is FetchCartFailure) {
                             return Center(
@@ -368,10 +364,13 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                             );
                           }
                           if (state is FetchCartSuccess) {
-                            debugPrint("TEST 2 = " + state.cart.length.toString());
+                            debugPrint(
+                                "TEST 2 = " + state.cart.length.toString());
                             // debugPrint("TEST 3 = " + state.uncovered.length.toString());
-                            return 
-                            ((state.cart != null && state.cart.length > 0) || (state.uncovered != null && state.uncovered.length > 0  ))
+                            return ((state.cart != null &&
+                                        state.cart.length > 0) ||
+                                    (state.uncovered != null &&
+                                        state.uncovered.length > 0))
                                 ? Scaffold(
                                     appBar: AppBar(
                                       automaticallyImplyLeading: false,
@@ -381,8 +380,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                                       title: Text("Keranjang",
                                           style: AppTypo.subtitle2
                                               .copyWith(color: Colors.black)),
-                                      bottom: 
-                                      PreferredSize(
+                                      bottom: PreferredSize(
                                         preferredSize: Size.fromHeight(50),
                                         child: WppCartHeader(),
                                       ),
@@ -396,7 +394,8 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                                               color: Colors.grey[100],
                                               child: WppCartBody(
                                                 cart: state.cart ?? null,
-                                                uncovered: state.uncovered ?? null,
+                                                uncovered:
+                                                    state.uncovered ?? null,
                                               ),
                                             ),
                                           ),
@@ -450,13 +449,16 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                                           "Silahkan pilih produk yang anda inginkan untuk mengisinya",
                                       labelBtn: "Mulai Belanja",
                                       onClick: () {
-                                        context.beamToNamed('/wpp/dashboard/${_repo.getSlugReseller()}');
+                                        context.beamToNamed(
+                                            '/wpp/dashboard/${_repo.getSlugReseller()}');
                                       },
                                     ),
                                   );
                           }
 
-                          return Center(child: CircularProgressIndicator(),);
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
                         },
                       ),
                     ),
