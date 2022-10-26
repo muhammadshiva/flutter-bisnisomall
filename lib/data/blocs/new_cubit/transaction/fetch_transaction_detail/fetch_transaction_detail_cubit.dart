@@ -17,8 +17,7 @@ class FetchTransactionDetailCubit extends Cubit<FetchTransactionDetailState> {
     emit(FetchTransactionDetailLoading());
     try {
       debugPrint("id $orderId");
-      final response =
-      await _repository.fetchProductDetail(orderId: orderId);
+      final response = await _repository.fetchOrderDetail(orderId: orderId);
       emit(FetchTransactionDetailSuccess(response.data));
     } catch (error) {
       if (error is NetworkException) {
