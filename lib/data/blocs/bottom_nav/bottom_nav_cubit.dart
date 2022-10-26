@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:marketplace/data/models/transaction.dart';
+// import 'package:marketplace/data/models/transaction.dart';
 import 'package:marketplace/ui/widgets/a_app_config.dart';
 import 'package:marketplace/utils/images.dart' as AppImg;
 import 'package:marketplace/utils/colors.dart' as AppColor;
@@ -13,7 +13,6 @@ part 'bottom_nav_state.dart';
 
 class BottomNavCubit extends Cubit<BottomNavState> {
   BottomNavCubit() : super(BottomNavInitial());
-
 
   int currentIndex = 0;
 
