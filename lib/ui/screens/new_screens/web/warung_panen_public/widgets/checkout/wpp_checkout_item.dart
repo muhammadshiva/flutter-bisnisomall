@@ -144,7 +144,8 @@ class _WppCheckoutItemState extends State<WppCheckoutItem> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 cartProduct2.variantSelected != null
-                                    ? Text(cartProduct2.variantSelected.variantName)
+                                    ? Text(cartProduct2
+                                        .variantSelected.variantName)
                                     : SizedBox(),
                                 SizedBox(
                                   height: 5,
@@ -208,7 +209,7 @@ class _WppCheckoutItemState extends State<WppCheckoutItem> {
                 height: 25,
               ),
               WppCheckoutCourierItem(
-                supplierId: item.sellerId,
+                supplierId: item.supplierId,
                 cart: widget.cart,
                 enableCourier: widget.enableCourier,
                 // productId: cartProduct.id,
