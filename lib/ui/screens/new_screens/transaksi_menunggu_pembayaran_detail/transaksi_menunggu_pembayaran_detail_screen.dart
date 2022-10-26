@@ -33,7 +33,7 @@ class _TransaksiMenungguPembayaranDetailScreenState
     super.initState();
     context
         .read<FetchTransactionMenungguPembayaranDetailCubit>()
-        .fetchDetail(orderId: widget.id);
+        .fetchDetail(paymentId: widget.id);
     debugPrint("ORDER ID : ${widget.id.toString()}");
   }
 
@@ -62,7 +62,8 @@ class _TransaksiMenungguPembayaranDetailScreenState
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      StatusPesananWidget(status: items.status, orderId: items.id),
+                      StatusPesananWidget(
+                          status: items.status, orderId: items.id),
                       Divider(
                         thickness: 1,
                       ),
@@ -106,7 +107,7 @@ class _TransaksiMenungguPembayaranDetailScreenState
                         context
                             .read<
                                 FetchTransactionMenungguPembayaranDetailCubit>()
-                            .fetchDetail(orderId: widget.id);
+                            .fetchDetail(paymentId: widget.id);
                       })
                     : ErrorFetch(
                         message: state.message,
@@ -114,7 +115,7 @@ class _TransaksiMenungguPembayaranDetailScreenState
                           context
                               .read<
                                   FetchTransactionMenungguPembayaranDetailCubit>()
-                              .fetchDetail(orderId: widget.id);
+                              .fetchDetail(paymentId: widget.id);
                         },
                       ),
               );
