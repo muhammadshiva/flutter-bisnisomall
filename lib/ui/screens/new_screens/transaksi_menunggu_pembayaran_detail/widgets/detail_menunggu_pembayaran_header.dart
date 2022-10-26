@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:marketplace/data/models/models.dart';
 import 'package:marketplace/data/models/new_models/order.dart';
-import 'package:marketplace/ui/screens/new_screens/invoice/invoice_payment_screen.dart';
-import 'package:marketplace/ui/screens/new_screens/invoice/invoice_screen.dart';
-import 'package:marketplace/ui/screens/new_screens/invoice/invoice_waiting_payment_screen.dart';
+import 'package:marketplace/ui/screens/new_screens/invoice/new_invoice/invoice_payment_screen.dart';
 import 'package:marketplace/ui/widgets/data_table.dart';
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 import 'package:marketplace/utils/extensions.dart' as AppExt;
 
 class DetailMenungguPembayaranHeader extends StatelessWidget {
-  const DetailMenungguPembayaranHeader(
-      {Key key, @required this.data})
+  const DetailMenungguPembayaranHeader({Key key, @required this.data})
       : super(key: key);
 
-  final OrderDetailMenungguPembayaranResponseData data;
+  final PaymentDetail data;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +22,11 @@ class DetailMenungguPembayaranHeader extends StatelessWidget {
           "${data.transactionCode}",
           "Lihat Invoice",
           () {
-            AppExt.pushScreen(context,
-                InvoiceWaitingPaymentScreen(data: data,));
+            AppExt.pushScreen(
+                context,
+                InvoicePaymentScreen(
+                  paymentId: data.id,
+                ));
           },
         ),
         SizedBox(
