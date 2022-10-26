@@ -3,13 +3,15 @@ import 'package:marketplace/data/models/new_models/order.dart';
 import 'package:marketplace/ui/widgets/data_table.dart';
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 
+import '../../../../../data/models/payment.dart';
+
 class DetailPengiriman extends StatelessWidget {
   const DetailPengiriman({
     Key key,
     @required this.data,
   }) : super(key: key);
 
-  final OrderDetailMenungguPembayaranResponseData data;
+  final PaymentDetail data;
 
   @override
   Widget build(BuildContext context) {
