@@ -16,15 +16,16 @@ class OrderWithSaldoPanenOtpBloc
     on<OrderWithSaldoPanenOtpEvent>(onOrderWithSaldoPanenOtp);
   }
 
-  final OrderRepository _orderRepository = OrderRepository();
+  final WalletRepository _walletRepository = WalletRepository();
 
   onOrderWithSaldoPanenOtp(OrderWithSaldoPanenOtpEvent event,
       Emitter<OrderWithSaldoPanenOtpState> emit) async {
     if (event is OrderWithSaldoPanenOtpSubmitted) {
       emit(OrderWithSaldoPanenOtpLoading());
       try {
-        final response = await _orderRepository.orderWithSaldoPanenConfirmation(
-            logId: event.logId, confirmationCode: event.confirmationCode);
+        final response =
+            await _walletRepository.orderWithSaldoPanenConfirmation(
+                logId: event.logId, confirmationCode: event.confirmationCode);
         emit(OrderWithSaldoPanenOtpSuccess(response.data));
       } catch (error) {
         if (error is NetworkException) {
