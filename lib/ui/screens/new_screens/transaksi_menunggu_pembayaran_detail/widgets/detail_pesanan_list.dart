@@ -3,6 +3,7 @@ import 'package:marketplace/data/models/new_models/order.dart';
 import 'package:marketplace/utils/extensions.dart' as AppExt;
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 
+import '../../../../../data/models/payment.dart';
 import 'detail_pesanan_item.dart';
 
 class DetailPesananList extends StatelessWidget {
@@ -11,7 +12,7 @@ class DetailPesananList extends StatelessWidget {
     @required this.data,
   }) : super(key: key);
 
-  final OrderDetailMenungguPembayaranResponseData data;
+  final PaymentDetail data;
 
   @override
   Widget build(BuildContext context) {
