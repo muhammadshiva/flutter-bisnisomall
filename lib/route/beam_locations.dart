@@ -57,7 +57,6 @@ class WarungPanenPublicLocation extends BeamLocation {
     WppCheckoutTempWeb checkoutTempWeb;
     WppInvoice wppInvoice;
 
-
     if (state.uri.pathSegments.contains('customeraddress')) {
       final List<dynamic> data =
           json.decode(AppExt.decryptMyData(state.queryParameters['dt']));
@@ -65,27 +64,27 @@ class WarungPanenPublicLocation extends BeamLocation {
     }
 
     if (state.uri.pathSegments.contains('checkout')) {
-      final Map<String,dynamic> data =
+      final Map<String, dynamic> data =
           json.decode(AppExt.decryptMyData(state.queryParameters['dt']));
-      alamatPelangganWithCart =  AlamatPelangganWithCart.fromJson(data);
+      alamatPelangganWithCart = AlamatPelangganWithCart.fromJson(data);
     }
 
     if (state.uri.pathSegments.contains('payment')) {
-      final Map<String,dynamic> data =
+      final Map<String, dynamic> data =
           json.decode(AppExt.decryptMyData(state.queryParameters['dt']));
-      checkoutTempWeb =  WppCheckoutTempWeb.fromJson(data);
+      checkoutTempWeb = WppCheckoutTempWeb.fromJson(data);
     }
 
     if (state.uri.pathSegments.contains('paymentdetail')) {
-      final Map<String,dynamic> data =
+      final Map<String, dynamic> data =
           json.decode(AppExt.decryptMyData(state.queryParameters['dt']));
-      wppInvoice =  WppInvoice.fromJson(data);
+      wppInvoice = WppInvoice.fromJson(data);
     }
 
     if (state.uri.pathSegments.contains('invoice')) {
-      final Map<String,dynamic> data =
+      final Map<String, dynamic> data =
           json.decode(AppExt.decryptMyData(state.queryParameters['dt']));
-      wppInvoice =  WppInvoice.fromJson(data);
+      wppInvoice = WppInvoice.fromJson(data);
     }
 
     return [
@@ -126,26 +125,28 @@ class WarungPanenPublicLocation extends BeamLocation {
             key: ValueKey('checkout'),
             child: WppCheckoutWebScreen(
               cart: alamatPelangganWithCart.newCart,
-              alamatPelangganWithCart : alamatPelangganWithCart,
+              alamatPelangganWithCart: alamatPelangganWithCart,
             )),
       if (state.uri.pathSegments.contains('payment'))
         BeamPage(
-            key: ValueKey('payment'),
-            child: WppPaymentWebScreen(checkoutTemp: checkoutTempWeb,),
-            ),
+          key: ValueKey('payment'),
+          child: WppPaymentWebScreen(
+            checkoutTemp: checkoutTempWeb,
+          ),
+        ),
       if (state.uri.pathSegments.contains('paymentdetail'))
         BeamPage(
             key: ValueKey('paymentdetail'),
             child: WppPaymentDetailWebScreen(
               orderData: wppInvoice.order,
-              checkoutTempWeb: wppInvoice.checkout,
+              checkoutTempWeb: wppInvoice.noAuthCheckout,
             )),
       if (state.uri.pathSegments.contains('invoice'))
         BeamPage(
             key: ValueKey('invoice'),
             child: WppInvoicePaymentWebScreen(
               order: wppInvoice.order,
-              checkout: wppInvoice.checkout,
+              checkout: wppInvoice.noAuthCheckout,
             )),
     ];
   }
