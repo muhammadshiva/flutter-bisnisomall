@@ -8,24 +8,29 @@ abstract class FetchTransactionMenungguPembayaranDetailState extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchTransactionMenungguPembayaranDetailInitial extends FetchTransactionMenungguPembayaranDetailState {}
+class FetchTransactionMenungguPembayaranDetailInitial
+    extends FetchTransactionMenungguPembayaranDetailState {}
 
-class FetchTransactionMenungguPembayaranDetailLoading extends FetchTransactionMenungguPembayaranDetailState {}
+class FetchTransactionMenungguPembayaranDetailLoading
+    extends FetchTransactionMenungguPembayaranDetailState {}
 
-class FetchTransactionMenungguPembayaranDetailSuccess extends FetchTransactionMenungguPembayaranDetailState {
+class FetchTransactionMenungguPembayaranDetailSuccess
+    extends FetchTransactionMenungguPembayaranDetailState {
   FetchTransactionMenungguPembayaranDetailSuccess(this.items);
 
-  final OrderDetailMenungguPembayaranResponseData items;
+  final PaymentDetail items;
 
   @override
   List<Object> get props => [items];
 }
 
-class FetchTransactionMenungguPembayaranDetailFailure extends FetchTransactionMenungguPembayaranDetailState {
+class FetchTransactionMenungguPembayaranDetailFailure
+    extends FetchTransactionMenungguPembayaranDetailState {
   final ErrorType type;
   final String message;
 
-  FetchTransactionMenungguPembayaranDetailFailure({this.type = ErrorType.general, this.message});
+  FetchTransactionMenungguPembayaranDetailFailure(
+      {this.type = ErrorType.general, this.message});
 
   FetchTransactionMenungguPembayaranDetailFailure.network(String message)
       : this(type: ErrorType.network, message: message);
