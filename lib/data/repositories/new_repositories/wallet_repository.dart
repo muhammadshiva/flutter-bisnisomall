@@ -51,11 +51,10 @@ class WalletRepository {
 
   Future<WalletWithdrawRuleResponse> fetchWihtdrawRule() async {
     final _token = await _authenticationRepository.getToken();
-    final response = await _provider.get("/master/general",
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $_token',
-          'ADS-Key': _adsKey
-        });
+    final response = await _provider.get("/master/general", headers: {
+      HttpHeaders.authorizationHeader: 'Bearer $_token',
+      'ADS-Key': _adsKey
+    });
 
     return WalletWithdrawRuleResponse.fromJson(response);
   }
@@ -77,14 +76,11 @@ class WalletRepository {
     var response = await dio.post(
       "$_baseUrl/user/wallet/withdraw",
       data: formData,
-      options: Options(
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $token',
-          HttpHeaders.contentTypeHeader: 'text/plain',
-          'ADS-Key':_adsKey
-        },
-        validateStatus: (status) => true
-      ),
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'text/plain',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
     );
     debugPrint("response $response");
     if (response.statusCode == 200) {
@@ -110,14 +106,11 @@ class WalletRepository {
     var response = await dio.post(
       "$_baseUrl/user/wallet/withdraw/confirm",
       data: formData,
-      options: Options(
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $token',
-          HttpHeaders.contentTypeHeader: 'text/plain',
-          'ADS-Key':_adsKey
-        },
-        validateStatus: (status) => true
-      ),
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'text/plain',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
     );
     debugPrint("response $response");
     if (response.statusCode == 200) {
@@ -141,14 +134,11 @@ class WalletRepository {
     var response = await dio.post(
       "$_baseUrl/user/wallet/withdraw",
       data: formData,
-      options: Options(
-        headers: {
-          HttpHeaders.authorizationHeader: 'Bearer $token',
-          HttpHeaders.contentTypeHeader: 'text/plain',
-          'ADS-Key':_adsKey
-        },
-        validateStatus: (status) => true
-      ),
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'text/plain',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
     );
     debugPrint("response $response");
     if (response.statusCode == 200) {
@@ -161,4 +151,60 @@ class WalletRepository {
     }
   }
 
+  Future<WalletPaymentResponse> orderWithSaldoPanen(
+      {@required int amount}) async {
+    var formData = new FormData.fromMap({
+      "amount": amount,
+    });
+    final token = await _authenticationRepository.getToken();
+    var response = await dio.post(
+      "$_baseUrl/user/wallet/payment",
+      data: formData,
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
+    );
+
+    debugPrint("response $response");
+
+    if (response.statusCode == 200) {
+      final statusCode = response.data['status'];
+      final message = response.data['message'] ?? 'Terjadi Kesalahan';
+
+      return WalletPaymentResponse.fromJson(response.data);
+    } else {
+      debugPrint("myresponse ${response}");
+      throw GeneralException(response.data.toString());
+    }
+  }
+
+  Future<WalletPaymentResponse> orderWithSaldoPanenConfirmation(
+      {@required int logId, @required int confirmationCode}) async {
+    var formData = new FormData.fromMap(
+        {"log_id": logId, "confirmation_code": confirmationCode});
+    final token = await _authenticationRepository.getToken();
+    var response = await dio.post(
+      "$_baseUrl/user/wallet/payment/confirm",
+      data: formData,
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
+    );
+
+    debugPrint("response $response");
+
+    if (response.statusCode == 200) {
+      final statusCode = response.data['status'];
+      final message = response.data['message'] ?? 'Terjadi Kesalahan';
+
+      return WalletPaymentResponse.fromJson(response.data);
+    } else {
+      debugPrint("myresponse ${response}");
+      throw GeneralException(response.data['message'].toString());
+    }
+  }
 }
