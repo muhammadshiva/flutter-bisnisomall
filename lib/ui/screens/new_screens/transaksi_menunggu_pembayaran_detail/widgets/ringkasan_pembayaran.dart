@@ -3,13 +3,15 @@ import 'package:marketplace/data/models/new_models/order.dart';
 import 'package:marketplace/ui/widgets/data_table.dart';
 import 'package:marketplace/utils/typography.dart' as AppTypo;
 
+import '../../../../../data/models/payment.dart';
+
 class RingkasanPembayaran extends StatefulWidget {
   const RingkasanPembayaran({
     Key key,
     @required this.data,
   }) : super(key: key);
 
-  final OrderDetailMenungguPembayaranResponseData data;
+  final PaymentDetail data;
 
   @override
   _RingkasanPembayaranState createState() => _RingkasanPembayaranState();
