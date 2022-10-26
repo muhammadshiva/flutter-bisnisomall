@@ -361,7 +361,7 @@ class _PaymentDetailScreenState extends State<PaymentDetailScreen> {
                                                                                 padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3),
                                                                                 child: Text(
                                                                                   "Ubah Rekening",
-                                                                                  style: AppTypo.overline.copyWith(color: AppColor.danger, decoration: TextDecoration.underline),
+                                                                                  style: AppTypo.overline.copyWith(color: AppColor.danger),
                                                                                 ),
                                                                               ),
                                                                             ),

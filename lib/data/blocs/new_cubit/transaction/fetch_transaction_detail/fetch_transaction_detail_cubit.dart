@@ -18,7 +18,23 @@ class FetchTransactionDetailCubit extends Cubit<FetchTransactionDetailState> {
     try {
       debugPrint("id $orderId");
       final response = await _repository.fetchOrderDetail(orderId: orderId);
-      emit(FetchTransactionDetailSuccess(response.data));
+      emit(FetchTransactionDetailSuccess(response.data, null));
+    } catch (error) {
+      if (error is NetworkException) {
+        emit(FetchTransactionDetailFailure.network(error.toString()));
+        return;
+      }
+      emit(FetchTransactionDetailFailure.general(error.toString()));
+    }
+  }
+
+  Future<void> fetchDetailWpp({@required int paymentId}) async {
+    emit(FetchTransactionDetailLoading());
+    try {
+      debugPrint("id $paymentId");
+      final response =
+          await _repository.fetchOrderDetailNoAuth(paymentId: paymentId);
+      emit(FetchTransactionDetailSuccess(null, response.dataNoAuth));
     } catch (error) {
       if (error is NetworkException) {
         emit(FetchTransactionDetailFailure.network(error.toString()));

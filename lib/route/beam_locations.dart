@@ -13,11 +13,14 @@ import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_c
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_choose_subdistrict_coverage_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_homepage_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_invoice_payment_web_screen.dart';
+import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_invoice_transaction_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_list_warung_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_payment_detail_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_payment_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_cart_web_screen.dart';
 import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_product_detail_web_screen.dart';
+import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_transaksi_detail_web_screen.dart';
+import 'package:marketplace/ui/screens/new_screens/web/warung_panen_public/wpp_transaksi_status_pesanan_web_screen.dart';
 import 'package:marketplace/utils/extensions.dart' as AppExt;
 
 final boxData = GetStorage();
@@ -48,6 +51,9 @@ class WarungPanenPublicLocation extends BeamLocation {
         '/wpp/payment',
         '/wpp/paymentdetail',
         '/wpp/invoice',
+        '/wpp/detailorder/:paymentId',
+        '/wpp/trackingorder/:orderId',
+        '/wpp/invoicedetailorder/:paymentId',
       ];
 
   @override
@@ -147,6 +153,24 @@ class WarungPanenPublicLocation extends BeamLocation {
             child: WppInvoicePaymentWebScreen(
               order: wppInvoice.order,
               checkout: wppInvoice.noAuthCheckout,
+            )),
+      if (state.uri.pathSegments.contains('detailorder'))
+        BeamPage(
+            key: ValueKey('detailorder'),
+            child: WppTransaksiDetailWebScreen(
+              paymentId: int.parse(state.pathParameters['paymentId']),
+            )),
+      if (state.uri.pathSegments.contains('trackingorder'))
+        BeamPage(
+            key: ValueKey('trackingorder'),
+            child: WppTransaksiStatusPesananScreen(
+              orderId: int.parse(state.pathParameters['orderId']),
+            )),
+      if (state.uri.pathSegments.contains('invoicedetailorder'))
+        BeamPage(
+            key: ValueKey('invoicedetailorder'),
+            child: WppInvoiceTransactionWebScreen(
+              paymentId: int.parse(state.pathParameters['paymentId']),
             )),
     ];
   }

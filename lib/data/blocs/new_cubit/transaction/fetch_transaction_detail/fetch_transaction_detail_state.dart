@@ -12,12 +12,13 @@ class FetchTransactionDetailInitial extends FetchTransactionDetailState {}
 class FetchTransactionDetailLoading extends FetchTransactionDetailState {}
 
 class FetchTransactionDetailSuccess extends FetchTransactionDetailState {
-  FetchTransactionDetailSuccess(this.items);
+  FetchTransactionDetailSuccess(this.items,this.itemsNoAuth);
 
   final OrderDetailResponseData items;
+  final WppOrderDetailResponseData itemsNoAuth;
 
   @override
-  List<Object> get props => [items];
+  List<Object> get props => [items,itemsNoAuth];
 }
 
 class FetchTransactionDetailFailure extends FetchTransactionDetailState {

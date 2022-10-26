@@ -264,8 +264,6 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen> {
                                           "Tambah Alamat",
                                           style: AppTypo.overline.copyWith(
                                               fontSize: 12,
-                                              decoration:
-                                                  TextDecoration.underline,
                                               color: AppColor.primary,
                                               fontWeight: FontWeight.w900),
                                         ),

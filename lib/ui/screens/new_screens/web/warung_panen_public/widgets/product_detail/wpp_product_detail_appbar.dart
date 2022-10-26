@@ -26,12 +26,10 @@ import 'package:marketplace/utils/typography.dart' as AppTypo;
 class WppProductDetailAppbar extends StatelessWidget {
   const WppProductDetailAppbar(
       {Key key,
-      @required this.backgroundColor,
-      @required this.shadowColor,
-      @required this.iconBackundColor,
-      @required this.iconColor,
-      this.isPublicResellerShop = false,
-      this.product})
+        @required this.backgroundColor,
+        @required this.shadowColor,
+        @required this.iconBackundColor,
+        @required this.iconColor, this.isPublicResellerShop = false, this.product})
       : super(key: key);
 
   final Color backgroundColor;
@@ -44,19 +42,19 @@ class WppProductDetailAppbar extends StatelessWidget {
   void _handleCopy(BuildContext context, String text, String message) {
     Clipboard.setData(new ClipboardData(text: text));
     ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          margin: EdgeInsets.zero,
-          duration: Duration(seconds: 2),
-          content: Text('$message'),
-          backgroundColor: Colors.grey[900],
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      margin: EdgeInsets.zero,
+                      duration: Duration(seconds: 2),
+                      content: Text('$message'),
+                      backgroundColor: Colors.grey[900],
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
   }
 
-  void _launchUrl(BuildContext context, String _url) async {
+  void _launchUrl(BuildContext context,String _url) async {
     if (await canLaunch(_url)) {
       await launch(_url);
     } else {
@@ -89,8 +87,7 @@ class WppProductDetailAppbar extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 if (kIsWeb) {
-                  context.beamToNamed(
-                      '/wpp/dashboard/${_recRepo.getSlugReseller()}');
+                   context.beamToNamed('/wpp/dashboard/${_recRepo.getSlugReseller()}');
                 } else {
                   Navigator.of(context).pop();
                 }
@@ -130,16 +127,12 @@ class WppProductDetailAppbar extends StatelessWidget {
                             "Link produk tersalin");
                       } else {
                         context.read<BagikanProdukCubit>().reset();
-                        WppProductDetailBsBagikanProduk()
-                            .showBsReview(context, product, null, false);
+                      WppProductDetailBsBagikanProduk().showBsReview(context,product,null,false);
                       }
-                    } else {
-                      BSFeedback.show(context,
-                          color: AppColor.danger,
-                          title: "Gagal bagikan produk",
-                          description: "Stok barang habis",
-                          icon: Icons.cancel_outlined);
+                    }else{
+                      BSFeedback.show(context,color: AppColor.danger,title: "Gagal bagikan produk",description: "Stok barang habis",icon: Icons.cancel_outlined);
                     }
+
                   },
                   child: ImageBlur(
                     color: iconBackundColor,

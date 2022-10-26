@@ -126,7 +126,7 @@ class _WppChooseSubdistrictCoverageWebScreenState extends State<WppChooseSubdist
                         );
                       }
                       if (state is KecamatanSearchFailure) {
-                        return Text("Failure");
+                        return Text("Kecamatan tidak tersedia");
                       }
                       if (state is KecamatanSearchSuccess) {
                         final items = state.result;

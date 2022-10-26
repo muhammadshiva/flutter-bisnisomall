@@ -38,7 +38,6 @@ class InvoicePesananSupplier extends StatelessWidget {
                   child: Text("Lihat Invoice",
                       style: AppTypo.caption.copyWith(
                         color: Theme.of(context).primaryColor,
-                        decoration: TextDecoration.underline,
                       )),
                 ),
               ),
@@ -61,14 +60,15 @@ class InvoicePesananSupplier extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.recipientName,
-                    style: AppTypo.caption.copyWith(
-                        fontWeight: FontWeight.w600
-                    )),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w600)),
               ),
             )
           ],
         ),
-        SizedBox(height: 8,),
+        SizedBox(
+          height: 8,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -85,14 +85,15 @@ class InvoicePesananSupplier extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.orderDate,
-                    style: AppTypo.caption.copyWith(
-                        fontWeight: FontWeight.w600
-                    )),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w600)),
               ),
             )
           ],
         ),
-        SizedBox(height: 8,),
+        SizedBox(
+          height: 8,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -109,9 +110,8 @@ class InvoicePesananSupplier extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.sentDate ?? "-",
-                    style: AppTypo.caption.copyWith(
-                        fontWeight: FontWeight.w600
-                    )),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w600)),
               ),
             ),
           ],

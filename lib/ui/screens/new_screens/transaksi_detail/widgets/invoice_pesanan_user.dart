@@ -45,7 +45,6 @@ class InvoicePesananUser extends StatelessWidget {
                   child: Text("Lihat Invoice",
                       style: AppTypo.caption.copyWith(
                         color: Theme.of(context).primaryColor,
-                        decoration: TextDecoration.underline,
                       )),
                 ),
               ),

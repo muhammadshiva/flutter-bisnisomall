@@ -1,7 +1,7 @@
 class CartStore {
   final bool checked;
   final double total;
-  final int sellerId;
+  final int supplierId;
   final int resellerId;
   final String nameSeller;
   final List<CartItem> item;
@@ -9,7 +9,7 @@ class CartStore {
   CartStore({
     this.checked = true,
     this.total,
-    this.sellerId,
+    this.supplierId,
     this.resellerId,
     this.item,
     this.nameSeller,
@@ -26,7 +26,7 @@ class CartStore {
     return CartStore(
       checked: checked ?? this.checked,
       total: total ?? this.total,
-      sellerId: sellerId ?? this.sellerId,
+      supplierId: sellerId ?? this.supplierId,
       resellerId: resellerId ?? this.resellerId,
       nameSeller: nameSeller ?? this.nameSeller,
       item: item ?? this.item,

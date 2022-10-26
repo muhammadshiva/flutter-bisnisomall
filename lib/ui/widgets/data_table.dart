@@ -3,7 +3,8 @@ import 'package:marketplace/utils/typography.dart' as AppTypo;
 import 'package:marketplace/utils/colors.dart' as AppColor;
 
 class dataTable {
-  static Widget detail(@required String title, @required String subtitle,{Color textColor = Colors.black}) {
+  static Widget detail(@required String title, @required String subtitle,
+      {Color textColor = Colors.black}) {
     return Table(
       children: [
         TableRow(
@@ -31,8 +32,8 @@ class dataTable {
                         subtitle,
                         softWrap: true,
                         textAlign: TextAlign.right,
-                        style: AppTypo.caption
-                            .copyWith(fontWeight: FontWeight.w500,color: textColor),
+                        style: AppTypo.caption.copyWith(
+                            fontWeight: FontWeight.w500, color: textColor),
                       ),
                     ),
                   ),
@@ -121,9 +122,9 @@ class dataTable {
                           softWrap: true,
                           textAlign: TextAlign.justify,
                           style: AppTypo.caption.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: AppColor.appPrimary,
-                              decoration: TextDecoration.underline),
+                            fontWeight: FontWeight.w500,
+                            color: AppColor.appPrimary,
+                          ),
                         ),
                       ),
                     ),

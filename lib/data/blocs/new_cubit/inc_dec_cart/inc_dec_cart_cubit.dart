@@ -47,12 +47,12 @@ class IncDecCartCubit extends Cubit<IncDecCartState> {
       if (isSupplier == true) {
         final _sellerId = cart[c].supplier.id;
       checkedStore
-          .add(CartStore(checked: false, total: _total, sellerId: _sellerId, resellerId: null, nameSeller: cart[c].supplier.name, item: checkedItem,),);
+          .add(CartStore(checked: false, total: _total, supplierId: _sellerId, resellerId: null, nameSeller: cart[c].supplier.name, item: checkedItem,),);
       }else{
         final _sellerId = cart[c].supplier != null ? cart[c].supplier.id : 0 ;
         final _resellerId = cart[c].reseller != null ? cart[c].reseller.id : 0 ;
       checkedStore
-          .add(CartStore(checked: false, total: _total, sellerId: _sellerId, resellerId: _resellerId, nameSeller: cart[c].reseller.name, item: checkedItem,),);
+          .add(CartStore(checked: false, total: _total, supplierId: _sellerId, resellerId: _resellerId, nameSeller: cart[c].reseller.name, item: checkedItem,),);
       }
       
       subTotal.add(_total);

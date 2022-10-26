@@ -153,8 +153,90 @@ class OrderRepository {
     return TrackingOrderResponse.fromJson(response);
   }
 
+  Future<WalletPaymentResponse> orderWithSaldoPanen(
+      {@required int amount}) async {
+    var formData = new FormData.fromMap({
+      "amount": amount,
+    });
+    final token = await _authenticationRepository.getToken();
+    var response = await dio.post(
+      "$_baseUrl/user/wallet/payment",
+      data: formData,
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
+    );
+
+    debugPrint("response $response");
+
+    if (response.statusCode == 200) {
+      final statusCode = response.data['status'];
+      final message = response.data['message'] ?? 'Terjadi Kesalahan';
+
+      return WalletPaymentResponse.fromJson(response.data);
+    } else {
+      debugPrint("myresponse ${response}");
+      throw GeneralException(response.data.toString());
+    }
+  }
+
+  Future<WalletPaymentResponse> orderWithSaldoPanenConfirmation(
+      {@required int logId, @required int confirmationCode}) async {
+    var formData = new FormData.fromMap(
+        {"log_id": logId, "confirmation_code": confirmationCode});
+    final token = await _authenticationRepository.getToken();
+    var response = await dio.post(
+      "$_baseUrl/user/wallet/payment/confirm",
+      data: formData,
+      options: Options(headers: {
+        HttpHeaders.authorizationHeader: 'Bearer $token',
+        HttpHeaders.contentTypeHeader: 'application/json',
+        'ADS-Key': _adsKey
+      }, validateStatus: (status) => true),
+    );
+
+    debugPrint("response $response");
+
+    if (response.statusCode == 200) {
+      final statusCode = response.data['status'];
+      final message = response.data['message'] ?? 'Terjadi Kesalahan';
+
+      return WalletPaymentResponse.fromJson(response.data);
+    } else {
+      debugPrint("myresponse ${response}");
+      throw GeneralException(response.data['message'].toString());
+    }
+  }
+
   Future<TrackingOrderResponse> fetchTrackingOrderNoAuth(
       {@required int orderId}) async {
+    final token = await _authenticationRepository.getToken();
+    final response =
+        await _provider.get("/order/noauth/logs/$orderId", headers: {
+      HttpHeaders.authorizationHeader: 'Bearer $token',
+      HttpHeaders.contentTypeHeader: 'application/json',
+      'ADS-Key': _adsKey
+    });
+    return TrackingOrderResponse.fromJson(response);
+  }
+
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+  //======================================================================
+
+  Future<TrackingOrderResponse> getPaymentOrder({@required orderId}) async {
     final token = await _authenticationRepository.getToken();
     final response =
         await _provider.get("/order/noauth/logs/$orderId", headers: {

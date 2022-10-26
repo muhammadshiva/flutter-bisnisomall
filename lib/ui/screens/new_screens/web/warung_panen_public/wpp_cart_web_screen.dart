@@ -173,7 +173,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
         if (stateStore[c].item[i].checked) {
           if (totalChecked >= 1) break;
           listCart.add(NewCart(
-              supplierId: stateStore[c].sellerId,
+              supplierId: stateStore[c].supplierId,
               resellerId: stateStore[c].resellerId,
               nameSeller: stateStore[c].nameSeller,
               city: _listCart[c].reseller.city,
@@ -183,7 +183,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
       }
     }
 
-    debugPrint("listCart ${listCart}");
+    debugPrint("listCart wpp cart : ${listCart}");
     context.beamToNamed(
         '/wpp/customeraddress/?dt=${AppExt.encryptMyData(jsonEncode(listCart))}');
   }
@@ -425,7 +425,7 @@ class _WppCartWebScreenState extends State<WppCartWebScreen> {
                                                   }
 
                                                   debugPrint(
-                                                      "seller id ${state.store[c].sellerId} productId $productId, quantity $quantity");
+                                                      "seller id ${state.store[c].supplierId} productId $productId, quantity $quantity");
                                                 }
 
                                                 context

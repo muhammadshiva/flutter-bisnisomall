@@ -143,10 +143,10 @@ class HorizontalFlashSale extends StatelessWidget {
                           "Lihat Semua",
                           textAlign: TextAlign.right,
                           style: AppTypo.LatoBold.copyWith(
-                              color: AppColor.success,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline),
+                            color: AppColor.success,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     )

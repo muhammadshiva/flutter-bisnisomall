@@ -8,7 +8,9 @@ class StatusPesananWidget extends StatelessWidget {
   final String status;
   final int orderId;
 
-  const StatusPesananWidget({Key key, @required this.status, @required this.orderId}) : super(key: key);
+  const StatusPesananWidget(
+      {Key key, @required this.status, @required this.orderId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,12 @@ class StatusPesananWidget extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            AppExt.pushScreen(context, TransaksiStatusPesananScreen(orderId: orderId));
+            AppExt.pushScreen(
+                context, TransaksiStatusPesananScreen(orderId: orderId));
           },
           child: Text("Lihat Status",
               style: AppTypo.caption.copyWith(
                 color: Theme.of(context).primaryColor,
-                decoration: TextDecoration.underline,
               )),
         ),
       ],

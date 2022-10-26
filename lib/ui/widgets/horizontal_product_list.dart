@@ -50,9 +50,7 @@ class ProductList extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: _screenWidth * (5 / 100),
-            vertical: 16
-          ),
+              horizontal: _screenWidth * (5 / 100), vertical: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -75,8 +73,7 @@ class ProductList extends StatelessWidget {
                           style: AppTypo.LatoBold.copyWith(
                               color: AppColor.success,
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
-                              decoration: TextDecoration.underline),
+                              fontSize: 13),
                         ),
                       ),
                     )
@@ -119,7 +116,6 @@ class ProductList extends StatelessWidget {
             },
           ),
         ),
-      
       ],
     );
   }

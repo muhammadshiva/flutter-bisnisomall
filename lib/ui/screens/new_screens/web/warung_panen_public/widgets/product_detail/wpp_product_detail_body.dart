@@ -141,6 +141,7 @@ class _WppProductDetailBodyState extends State<WppProductDetailBody> {
                   } else {
                     if (widget.product.productVariant.length > 0) {
                             BsSelectVariant().showBsReview(context,
+                            imageProduct:widget.product.coverPhoto,
                             listVariant:widget.product.productVariant, 
                             variantSelected: _productVariantSelected,
                             onVariantSelected: (int val,ProductVariant val2){

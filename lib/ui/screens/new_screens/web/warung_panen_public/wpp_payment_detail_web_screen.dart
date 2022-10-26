@@ -495,20 +495,20 @@ class _WppPaymentDetailWebScreenState extends State<WppPaymentDetailWebScreen> {
                                 },
                                 isUpperCase: false,
                               ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              RoundedButton.outlined(
-                                label: "Download Invoice",
-                                onPressed: () {
-                                  WppInvoice wppInvoice = WppInvoice(
-                                      order: widget.orderData,
-                                      noAuthCheckout: widget.checkoutTempWeb);
-                                  context.beamToNamed(
-                                      '/wpp/invoice?dt=${AppExt.encryptMyData(jsonEncode(wppInvoice))}');
-                                },
-                                isUpperCase: false,
-                              ),
+                              // SizedBox(
+                              //   height: 15,
+                              // ),
+                              // RoundedButton.outlined(
+                              //   label: "Download Invoice",
+                              //   onPressed: () {
+                              //     WppInvoice wppInvoice = WppInvoice(
+                              //         order: widget.orderData,
+                              //         checkout: widget.checkoutTempWeb);
+                              //     context.beamToNamed(
+                              //         '/wpp/invoice?dt=${AppExt.encryptMyData(jsonEncode(wppInvoice))}');
+                              //   },
+                              //   isUpperCase: false,
+                              // ),
                               SizedBox(
                                 height: 30,
                               ),

@@ -12,7 +12,6 @@ import 'package:marketplace/data/blocs/user_data/user_data_cubit.dart';
 import 'package:marketplace/data/models/models.dart';
 import 'package:marketplace/data/repositories/new_repositories/recipent_repository.dart';
 import 'package:marketplace/ui/screens/new_screens/product_detail/product_detail_screen.dart';
-import 'package:marketplace/ui/screens/new_screens/product_detail/widget/bs_bagikan_produk.dart';
 import 'package:marketplace/ui/widgets/bs_feedback.dart';
 import 'package:marketplace/utils/colors.dart' as AppColor;
 import 'package:marketplace/utils/extensions.dart' as AppExt;
