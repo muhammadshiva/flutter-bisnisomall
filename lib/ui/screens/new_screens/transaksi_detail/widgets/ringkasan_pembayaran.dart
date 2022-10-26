@@ -17,10 +17,11 @@ class RingkasanPembayaran extends StatelessWidget {
       children: [
         Text(
           "Ringkasan Pesanan",
-          style:
-          AppTypo.subtitle1.copyWith(fontWeight: FontWeight.bold),
+          style: AppTypo.subtitle1.copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 16,),
+        SizedBox(
+          height: 16,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -37,8 +38,8 @@ class RingkasanPembayaran extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.paymentMethod,
-                    style: AppTypo.caption
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w500)),
               ),
             )
           ],
@@ -62,8 +63,8 @@ class RingkasanPembayaran extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.subtotal,
-                    style: AppTypo.caption
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w500)),
               ),
             )
           ],
@@ -87,8 +88,8 @@ class RingkasanPembayaran extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(data.shippingCost,
-                    style: AppTypo.caption
-                        .copyWith(fontWeight: FontWeight.w500)),
+                    style:
+                        AppTypo.caption.copyWith(fontWeight: FontWeight.w500)),
               ),
             ),
           ],
@@ -110,8 +111,8 @@ class RingkasanPembayaran extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "TOTAL",
-                  style: AppTypo.caption.copyWith(
-                      color: Theme.of(context).primaryColor),
+                  style: AppTypo.caption
+                      .copyWith(color: Theme.of(context).primaryColor),
                 ),
               ),
             ),
@@ -120,8 +121,8 @@ class RingkasanPembayaran extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   data.total,
-                  style: AppTypo.caption.copyWith(
-                      color: Theme.of(context).primaryColor),
+                  style: AppTypo.caption
+                      .copyWith(color: Theme.of(context).primaryColor),
                 ),
               ),
             ),
