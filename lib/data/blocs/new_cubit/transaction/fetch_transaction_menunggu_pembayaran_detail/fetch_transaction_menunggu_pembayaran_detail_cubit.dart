@@ -6,26 +6,32 @@ import 'package:marketplace/data/models/new_models/order.dart';
 import 'package:marketplace/data/repositories/new_repositories/transaction_repository.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../models/payment.dart';
+
 part 'fetch_transaction_menunggu_pembayaran_detail_state.dart';
 
-class FetchTransactionMenungguPembayaranDetailCubit extends Cubit<FetchTransactionMenungguPembayaranDetailState> {
-  FetchTransactionMenungguPembayaranDetailCubit() : super(FetchTransactionMenungguPembayaranDetailInitial());
+class FetchTransactionMenungguPembayaranDetailCubit
+    extends Cubit<FetchTransactionMenungguPembayaranDetailState> {
+  FetchTransactionMenungguPembayaranDetailCubit()
+      : super(FetchTransactionMenungguPembayaranDetailInitial());
 
   final TransactionRepository _repository = TransactionRepository();
 
-  Future<void> fetchDetail({@required int orderId}) async {
+  Future<void> fetchDetail({@required int paymentId}) async {
     emit(FetchTransactionMenungguPembayaranDetailLoading());
     try {
-      debugPrint("id $orderId");
+      debugPrint("id $paymentId");
       final response =
-      await _repository.fetchProductMenungguPembayaranDetail(orderId: orderId);
+          await _repository.fetchPaymentDetail(paymentId: paymentId);
       emit(FetchTransactionMenungguPembayaranDetailSuccess(response.data));
     } catch (error) {
       if (error is NetworkException) {
-        emit(FetchTransactionMenungguPembayaranDetailFailure.network(error.toString()));
+        emit(FetchTransactionMenungguPembayaranDetailFailure.network(
+            error.toString()));
         return;
       }
-      emit(FetchTransactionMenungguPembayaranDetailFailure.general(error.toString()));
+      emit(FetchTransactionMenungguPembayaranDetailFailure.general(
+          error.toString()));
     }
   }
 }
