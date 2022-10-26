@@ -169,7 +169,7 @@ class _CartScreenState extends State<CartScreen> {
         if (stateStore[c].item[i].checked) {
           if (totalChecked >= 1) break;
           listCart.add(NewCart(
-              sellerId: stateStore[c].sellerId,
+              supplierId: stateStore[c].sellerId,
               nameSeller: stateStore[c].nameSeller,
               city: _listCart[c].supplier.city,
               product: products));
